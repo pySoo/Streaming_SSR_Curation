@@ -12,7 +12,7 @@
     "createDefaultProgram": true
   },
   "plugins": ["unused-imports", "simple-import-sort"],
-  "extends": ["plugin:prettier/recommended", "next/core-web-vitals"],
+  "extends": ["plugin:prettier/recommended"],
   "settings": {
     "react": {
       "version": "detect"
@@ -34,7 +34,6 @@
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn"
   },
-  "ignorePatterns": ["./tailwind.config.js", "./postcss.config.js"],
   "globals": {
     "React": "writable"
   }
