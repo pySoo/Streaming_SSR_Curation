@@ -2,7 +2,7 @@ import { dehydrate, Hydrate } from '@tanstack/react-query';
 
 import getQueryClient from '@/app/api/queries/getQueryClient';
 import { QUERY_KEYS } from '@/app/api/queries/queryKey';
-import { getShoppingList } from '@/hooks/useGetShoppingList';
+import { getShoppingList } from '@/hooks/apis/getShoppingList';
 
 import ShoppingListSection from './ShoppingListSection';
 
