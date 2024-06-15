@@ -30,7 +30,7 @@ export default function useGetShoppingList() {
         return start === finalPage ? false : nextPage;
       },
       select: (data) => ({
-        pages: data.pages,
+        pages: data.pages.flatMap((value) => value.items),
         pageParams: data.pageParams,
       }),
       suspense: true,
