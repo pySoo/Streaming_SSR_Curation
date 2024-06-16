@@ -2,6 +2,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { QUERY_KEYS } from '@/app/api/queries/queryKey';
 import { ShoppingListResponse } from '@/app/api/types';
+import useLikeStore from '@/store/likeStore';
 
 export const getShoppingList = async (page: number = 1) => {
   const response = await fetch(
@@ -17,6 +18,8 @@ export const getShoppingList = async (page: number = 1) => {
 };
 
 export default function useGetShoppingList() {
+  const likeList = useLikeStore((state) => state.likeList);
+
   return useInfiniteQuery(
     [QUERY_KEYS.SHOPPING.LIST],
     ({ pageParam = 1 }) => getShoppingList(pageParam),
@@ -30,7 +33,17 @@ export default function useGetShoppingList() {
         return start === finalPage ? false : nextPage;
       },
       select: (data) => ({
-        pages: data.pages.flatMap((value) => value.items),
+        pages: data.pages.flatMap((result) => {
+          const filteredProduct = result.items.map((item) => {
+            const isLikedItem = likeList.findIndex(
+              (likeItem) => likeItem.productId === item.productId,
+            );
+
+            return { ...item, isLiked: isLikedItem > -1 };
+          });
+
+          return filteredProduct;
+        }),
         pageParams: data.pageParams,
       }),
       suspense: true,

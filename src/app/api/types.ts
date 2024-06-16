@@ -1,4 +1,4 @@
-export interface ShoppingItem {
+export interface Product {
   productId: string;
   title: string;
   link: string;
@@ -6,12 +6,15 @@ export interface ShoppingItem {
   lprice: string;
   hprice: string;
   mallName: string;
+  isLiked: boolean;
 }
+
+export type ProductId = Product['productId'];
 
 export interface ShoppingListResponse {
   lastBuildDate: string;
   total: number;
   start: number;
   display: number;
-  items: ShoppingItem[];
+  items: Product[];
 }
