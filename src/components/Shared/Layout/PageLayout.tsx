@@ -1,19 +1,29 @@
 import { PropsWithChildren, ReactNode } from 'react';
 
-import Header from '../Header';
+import { $ } from '@/utils/core';
 
 interface Props extends PropsWithChildren {
   header?: ReactNode;
-  hasCTAButton?: boolean;
+  bottom?: ReactNode;
+  className?: string;
 }
 
-export default function PageLayout({ header, hasCTAButton, children }: Props) {
+export default function PageLayout({
+  header,
+  bottom,
+  className,
+  children,
+}: Props) {
   return (
     <div
-      className={`w-full h-screen max-w-[425px] mx-auto px-5 tracking-tight ${header ? 'pt-[60px]' : ''} ${hasCTAButton ? 'pb-[100px]' : ''}`}
+      className={$(
+        'w-full min-h-screen max-w-[600px] mx-auto px-5 tracking-tight',
+        className,
+      )}
     >
-      {header && <Header>{header}</Header>}
+      {header && header}
       {children}
+      {bottom && bottom}
     </div>
   );
 }
