@@ -14,6 +14,10 @@ const NAV_LIST = [
     path: PATH.ROOT,
   },
   {
+    name: '상품 검색',
+    path: PATH.SEARCH,
+  },
+  {
     name: '북마크',
     path: PATH.LIKE,
   },
