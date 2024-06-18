@@ -1,6 +1,5 @@
-'use client';
-
-import { usePathname, useRouter } from 'next/navigation';
+import { headers } from 'next/headers';
+import Link from 'next/link';
 import { PropsWithChildren } from 'react';
 
 import { PATH } from '@/constants/path';
@@ -24,12 +23,8 @@ const NAV_LIST = [
 ];
 
 export default function Navigation({ children }: PropsWithChildren) {
-  const pathname = usePathname();
-  const { push } = useRouter();
-
-  const onClickNavItem = (path: string) => {
-    push(path);
-  };
+  const headersList = headers();
+  const headerPathname = headersList.get('x-pathname') || '';
 
   return (
     <nav className='w-full fixed bottom-0 left-0 bg-white shadow-md'>
@@ -41,13 +36,14 @@ export default function Navigation({ children }: PropsWithChildren) {
                 <List.Row
                   key={path}
                   className={`w-[50%] justify-center`}
-                  onClick={() => onClickNavItem(path)}
                 >
-                  <Text
-                    className={`font-medium p-2 cursor-pointer ${path === pathname ? 'text-[#1360D1] font-semibold' : 'text-gray-400'}`}
-                  >
-                    {name}
-                  </Text>
+                  <Link href={path}>
+                    <Text
+                      className={`font-medium p-2 cursor-pointer ${path === headerPathname ? 'text-[#1360D1] font-semibold' : 'text-gray-400'}`}
+                    >
+                      {name}
+                    </Text>
+                  </Link>
                 </List.Row>
               );
             })}
