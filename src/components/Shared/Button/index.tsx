@@ -14,7 +14,7 @@ export default function Button({
 }: Props) {
   return (
     <button
-      className={`flex justify-center items-center rounded-md font-medium disabled:bg-gray-300 ${TYPE_VARIANTS[variant]} ${SIZE_VARIANTS[size]} ${className}`}
+      className={`flex justify-center items-center rounded-md font-medium disabled:bg-gray-300 whitespace-nowrap ${TYPE_VARIANTS[variant]} ${SIZE_VARIANTS[size]} ${className}`}
       {...props}
     />
   );
