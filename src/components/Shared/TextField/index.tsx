@@ -43,7 +43,7 @@ TextField.Input = forwardRef(
     return (
       <input
         ref={ref}
-        className={`w-full p-2 rounded-md border border-gray-300 rounded-md p-2 outline-none focus:border-[#FE6F0F] ${className}`}
+        className={`w-full p-2 rounded-md border border-gray-300 rounded-md p-2 outline-none focus:border-primary ${className}`}
         {...props}
       />
     );
@@ -62,7 +62,7 @@ TextField.Textarea = forwardRef(
     return (
       <textarea
         ref={ref}
-        className={`w-full p-2 rounded-md border border-gray-300 rounded-md p-2 outline-none focus:border-[#FE6F0F] resize-none ${className}`}
+        className={`w-full p-2 rounded-md border border-gray-300 rounded-md p-2 outline-none focus:border-primary resize-none ${className}`}
         {...props}
       />
     );
