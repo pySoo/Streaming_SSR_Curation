@@ -39,7 +39,7 @@ export default function Navigation({ children }: PropsWithChildren) {
                 >
                   <Link href={path}>
                     <Text
-                      className={`font-medium p-2 cursor-pointer ${path === headerPathname ? 'text-[#1360D1] font-semibold' : 'text-gray-400'}`}
+                      className={`font-medium p-2 cursor-pointer ${path === headerPathname ? 'text-primary font-semibold' : 'text-gray-400'}`}
                     >
                       {name}
                     </Text>

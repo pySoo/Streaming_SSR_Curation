@@ -21,8 +21,8 @@ export default function Button({
 }
 
 const TYPE_VARIANTS = {
-  primary: 'bg-[#1360D1] text-white',
-  secondary: 'bg-transparent text-[#1360D1]',
+  primary: 'bg-primary text-white',
+  secondary: 'bg-transparent text-primary',
 };
 
 const SIZE_VARIANTS = {
