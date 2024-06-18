@@ -1,6 +1,6 @@
 'use client';
 
-import useGetShoppingList from '@/hooks/apis/getShoppingList';
+import { useGetShoppingList } from '@/hooks/apis/getShoppingList';
 import { useIntersect } from '@/hooks/useIntersect';
 
 import List from '../Shared/Layout/List';
@@ -9,8 +9,14 @@ import Spinner from '../Shared/Spinner';
 import ProductCard from './ProductCard';
 import ProductLikeButton from './ProductLikeButton';
 
-export default function ShoppingListSection() {
-  const { data, isFetching, hasNextPage, fetchNextPage } = useGetShoppingList();
+interface Props {
+  query?: string;
+}
+
+export default function ShoppingListSection({ query }: Props) {
+  const { data, isFetching, hasNextPage, fetchNextPage } = useGetShoppingList({
+    query,
+  });
 
   const handleIntersect = () => {
     if (isFetching || !hasNextPage) return;
@@ -26,7 +32,7 @@ export default function ShoppingListSection() {
 
   const { pages: shoppingList } = data;
   return (
-    <section className='pt-16'>
+    <section>
       <List className='grid grid-cols-2'>
         {shoppingList.map((product, index) => (
           <List.Row
