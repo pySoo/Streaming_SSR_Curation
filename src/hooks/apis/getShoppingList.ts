@@ -4,9 +4,9 @@ import { QUERY_KEYS } from '@/app/api/queries/queryKey';
 import { ShoppingListResponse } from '@/app/api/types';
 import useLikeStore from '@/store/likeStore';
 
-export const getShoppingList = async (page: number = 1) => {
+export const getShoppingList = async (page: number = 1, query?: string) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_LOCAL_HOST}/api/getShoppingList?page=${page}`,
+    `${process.env.NEXT_PUBLIC_LOCAL_HOST}/api/getShoppingList?page=${page}&query=${query}`,
   );
 
   if (!response.ok) {
@@ -17,12 +17,12 @@ export const getShoppingList = async (page: number = 1) => {
   return result;
 };
 
-export default function useGetShoppingList() {
+export const useGetShoppingList = ({ query }: { query?: string } = {}) => {
   const likeList = useLikeStore((state) => state.likeList);
 
   return useInfiniteQuery(
     [QUERY_KEYS.SHOPPING.LIST],
-    ({ pageParam = 1 }) => getShoppingList(pageParam),
+    ({ pageParam = 1 }) => getShoppingList(pageParam, query),
     {
       getNextPageParam: (lastPage) => {
         const { start, total, display } = lastPage;
@@ -49,4 +49,4 @@ export default function useGetShoppingList() {
       suspense: true,
     },
   );
-}
+};
