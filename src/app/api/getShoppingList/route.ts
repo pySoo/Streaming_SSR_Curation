@@ -9,6 +9,7 @@ import {
 export async function GET(request: NextRequest) {
   const page = request.nextUrl.searchParams.get('page') ?? '1';
   const query = request.nextUrl.searchParams.get('query');
+  const display = request.nextUrl.searchParams.get('display');
 
   if (SHOPPING_API_CLIENT_ID == null || SHOPPING_API_CLIENT_SECRET == null)
     return;
@@ -18,7 +19,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const response = await fetch(
-      `https://openapi.naver.com/v1/search/shop.json?query=${query}&start=${page}`,
+      `https://openapi.naver.com/v1/search/shop.json?query=${query}&start=${page}&display=${display}`,
       {
         headers: {
           'X-Naver-Client-Id': SHOPPING_API_CLIENT_ID,
