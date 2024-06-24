@@ -6,11 +6,13 @@ import useLikeStore from '@/store/likeStore';
 
 const MOCK_QUERY = 'summer';
 
-export const getShoppingList = async (page: number = 1, query?: string) => {
-  const searchQuery = query ?? MOCK_QUERY;
-
+export const getShoppingList = async (
+  page: number = 1,
+  query: string = MOCK_QUERY,
+  display: number = 10,
+) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_LOCAL_HOST}/api/getShoppingList?query=${searchQuery}&page=${page}`,
+    `${process.env.NEXT_PUBLIC_LOCAL_HOST}/api/getShoppingList?query=${query}&page=${page}&display=${display}`,
   );
 
   if (!response.ok) {

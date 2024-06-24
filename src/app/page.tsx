@@ -2,6 +2,8 @@ import Navigation from '@/components/Navigation';
 import AsyncBoundary from '@/components/Shared/AsyncBoundary';
 import PageLayout from '@/components/Shared/Layout/PageLayout';
 import HydratedShoppingList from '@/components/Shopping/HydratedShoppingList';
+import HydratedWeatherList from '@/components/Weather/HydratedWeatherList';
+import WeatherListSkeleton from '@/components/Weather/WeatherListSkeleton';
 
 export default function Main() {
   return (
@@ -10,6 +12,9 @@ export default function Main() {
       bottom={<Navigation />}
     >
       <main>
+        <AsyncBoundary suspenseFallback={<WeatherListSkeleton />}>
+          <HydratedWeatherList />
+        </AsyncBoundary>
         <AsyncBoundary>
           <HydratedShoppingList />
         </AsyncBoundary>

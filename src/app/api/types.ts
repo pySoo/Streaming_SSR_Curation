@@ -18,3 +18,22 @@ export interface ShoppingListResponse {
   display: number;
   items: Product[];
 }
+
+export interface Weather {
+  time: number;
+  summary: string;
+  temperatureHigh: number;
+  temperatureLow: number;
+  icon: string;
+}
+
+export interface WeatherListResponse {
+  daily: {
+    data: Weather[];
+  };
+}
+
+export interface WeatherDescription {
+  title: string;
+  icon: string;
+}
