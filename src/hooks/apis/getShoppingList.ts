@@ -57,12 +57,18 @@ export const useGetShoppingList = ({ query }: { query?: string } = {}) => {
   );
 };
 
-export const useCurationShoppingList = ({ query }: { query: string }) => {
+export const useCurationShoppingList = ({
+  query,
+  display = 9,
+}: {
+  query: string;
+  display?: number;
+}) => {
   const likeList = useLikeStore((state) => state.likeList);
 
   return useQuery(
-    [QUERY_KEYS.SHOPPING.LIST, query],
-    () => getShoppingList(1, query, 9),
+    [QUERY_KEYS.SHOPPING.LIST, query, display],
+    () => getShoppingList(1, query, display),
     {
       select: (data) => {
         const filteredProduct = data.items.map((item) => {
