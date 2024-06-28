@@ -20,11 +20,11 @@ export default function RecommendCosmetic() {
 
   return (
     <>
-      <Stack.Row className='gap-2'>
-        {curationKeywords.map((keyword, index) => (
+      <Stack.Row className='gap-2 flex-wrap'>
+        {curationKeywords.map((keyword) => (
           <Tag
             key={keyword}
-            className='bg-primary cursor-default'
+            className='bg-blue-500 cursor-default'
           >
             {keyword}
           </Tag>
