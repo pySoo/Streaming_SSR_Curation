@@ -1,10 +1,11 @@
+import Image from 'next/image';
+
 import { Weather } from '@/app/api/types';
 import { convertTimestampToDate, isToday } from '@/utils/date';
 
 import List from '../Shared/Layout/List';
 import Stack from '../Shared/Layout/Stack';
 import Text from '../Shared/Text';
-import Image from 'next/image';
 
 interface WeatherItemProps {
   weather: Weather;
