@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 
 import { QUERY_KEYS } from '@/app/api/queries/queryKey';
 import { ShoppingListResponse } from '@/app/api/types';
@@ -52,6 +52,35 @@ export const useGetShoppingList = ({ query }: { query?: string } = {}) => {
         }),
         pageParams: data.pageParams,
       }),
+      suspense: true,
+    },
+  );
+};
+
+export const useCurationShoppingList = ({
+  query,
+  display = 9,
+}: {
+  query: string;
+  display?: number;
+}) => {
+  const likeList = useLikeStore((state) => state.likeList);
+
+  return useQuery(
+    [QUERY_KEYS.SHOPPING.LIST, query, display],
+    () => getShoppingList(1, query, display),
+    {
+      select: (data) => {
+        const filteredProduct = data.items.map((item) => {
+          const isLikedItem = likeList.findIndex(
+            (likeItem) => likeItem.productId === item.productId,
+          );
+
+          return { ...item, isLiked: isLikedItem > -1 };
+        });
+
+        return filteredProduct;
+      },
       suspense: true,
     },
   );

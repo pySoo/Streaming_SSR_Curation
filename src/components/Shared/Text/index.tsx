@@ -1,5 +1,7 @@
 import { AllHTMLAttributes, ReactNode } from 'react';
 
+import { $ } from '@/utils/core';
+
 type Props = {
   as?: keyof JSX.IntrinsicElements;
   variant?: 'title' | 'subtitle' | 'body' | 'caption';
@@ -16,7 +18,7 @@ export default function Text({
 }: Props) {
   return (
     <Component
-      className={`${TEXT_VARIANT[variant]} ${className}`}
+      className={$(`${TEXT_VARIANT[variant]}`, className)}
       {...props}
     >
       {children}
