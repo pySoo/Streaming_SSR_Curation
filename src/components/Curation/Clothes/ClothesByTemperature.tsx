@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import { Weather } from '@/app/api/types';
 import { getClothesByTemperature } from '@/utils/curation';
 
 import AsyncBoundary from '../../Shared/AsyncBoundary';
@@ -9,21 +8,21 @@ import Stack from '../../Shared/Layout/Stack';
 import Tag from '../../Shared/Tag';
 import Text from '../../Shared/Text';
 import CurationList from '../CurationList';
-import CurationListSkeleton from '../CurationListSkeleton';
+import CurationSkeleton from '../Skeleton/CurationSkeleton';
 
 interface Props {
-  weather: Weather;
+  temperature: number;
+  keywords: string[];
   isLowTemperature: boolean;
 }
 
 export default function ClothesByTemperature({
-  weather,
+  temperature,
+  keywords,
   isLowTemperature,
 }: Props) {
-  const [matchedClothes, setMatchedClothes] = useState<string[]>([]);
-  const [selectedCloth, setSelectedCloth] = useState<string>(
-    matchedClothes[0] ?? '',
-  );
+  const [matchedClothes, setMatchedClothes] = useState<string[]>(keywords);
+  const [selectedCloth, setSelectedCloth] = useState<string>(matchedClothes[0]);
 
   const handleKeywordClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const cloth = e.currentTarget.textContent;
@@ -33,17 +32,11 @@ export default function ClothesByTemperature({
   };
 
   useEffect(() => {
-    if (weather == null) return;
-
-    const temperature = isLowTemperature
-      ? weather.temperatureLow
-      : weather.temperatureHigh;
-
     const matchedClothes = getClothesByTemperature(temperature);
 
     setMatchedClothes(matchedClothes);
-    setSelectedCloth(matchedClothes[0] ?? '');
-  }, [weather]);
+    setSelectedCloth(matchedClothes[0]);
+  }, [temperature]);
 
   return (
     <Stack>
@@ -51,7 +44,7 @@ export default function ClothesByTemperature({
         <Stack.Row className='items-end'>
           <Tag
             className={`cursor-default text-white ${isLowTemperature ? 'bg-blue-400' : 'bg-orange-400'}`}
-          >{`${isLowTemperature ? `최저 온도 ${weather.temperatureLow}` : `최고 온도 ${weather.temperatureHigh}`}°C`}</Tag>
+          >{`${isLowTemperature ? '최저' : '최고'} 온도 ${temperature} °C`}</Tag>
           <Text
             variant='caption'
             className='ml-1'
@@ -73,7 +66,9 @@ export default function ClothesByTemperature({
         </List>
       </Stack>
       {selectedCloth && (
-        <AsyncBoundary suspenseFallback={<CurationListSkeleton />}>
+        <AsyncBoundary
+          suspenseFallback={<CurationSkeleton.ClothesCurationList />}
+        >
           <CurationList query={selectedCloth} />
         </AsyncBoundary>
       )}
