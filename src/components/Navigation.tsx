@@ -35,7 +35,7 @@ export default function Navigation({ children }: PropsWithChildren) {
               return (
                 <List.Row
                   key={path}
-                  className={`w-[50%] justify-center`}
+                  className={`w-[33%] justify-center`}
                 >
                   <Link href={path}>
                     <Text
