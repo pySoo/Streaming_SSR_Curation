@@ -28,13 +28,13 @@ export const getCurationListByWeather = (weatherList: Weather[]) => {
 
   if (weatherForecast.highTemperature >= 30) {
     curationList.push({
-      keyword: '더운 날씨에 주의하세요',
-      description: '수분을 잃지 않도록 촉촉하게 💦',
-      query: '수분크림',
+      keyword: '30도 이상 더위에 주의하세요',
+      description: '휴대용 선풍기로 더위를 날려보아요 🌬',
+      query: '휴대용 선풍기',
     });
-  } else if (weatherForecast.highTemperature >= 25) {
+  } else if (weatherForecast.highTemperature >= 20) {
     curationList.push({
-      keyword: '더운 날씨에 주의하세요',
+      keyword: '자외선에 주의하세요',
       description: '자외선 차단 필수 ☀️',
       query: '선크림',
     });
