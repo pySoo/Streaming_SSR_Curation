@@ -4,14 +4,16 @@ import Navigation from '@/components/Navigation';
 import AsyncBoundary from '@/components/Shared/AsyncBoundary';
 import PageLayout from '@/components/Shared/Layout/PageLayout';
 import Stack from '@/components/Shared/Layout/Stack';
+import WeatherBackground from '@/components/Weather/Background/WeatherBackground';
 import HydratedWeatherList from '@/components/Weather/HydratedWeatherList';
 import WeatherListSkeleton from '@/components/Weather/WeatherListSkeleton';
 
 export default function Main() {
   return (
     <PageLayout
-      className='pt-5 pb-[70px]'
+      className='pb-navigation'
       bottom={<Navigation />}
+      background={<WeatherBackground />}
     >
       <main>
         <Stack className='gap-10'>
