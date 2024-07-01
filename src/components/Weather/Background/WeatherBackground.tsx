@@ -25,7 +25,7 @@ export default function WeatherBackground() {
 
   return (
     <div
-      className='w-full text-lg h-full min-h-screen absolute top-0 left-0 pb-[70px]'
+      className='w-full text-lg h-full min-h-screen absolute top-0 left-0 pb-navigation'
       style={{
         background: `linear-gradient(${skyColor})`,
       }}

@@ -28,7 +28,7 @@ export default function Navigation({ children }: PropsWithChildren) {
 
   return (
     <nav className='w-full fixed bottom-0 left-0 bg-white shadow-md z-navigation'>
-      <List className='max-w-[600px] h-[50px] flex-row justify-center mx-auto border-t-[1px] border-gray-200'>
+      <List className='max-w-tablet h-[50px] flex-row justify-center mx-auto border-t-[1px] border-gray-200'>
         {children ?? (
           <>
             {NAV_LIST.map(({ name, path }) => {
