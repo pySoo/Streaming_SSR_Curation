@@ -57,7 +57,7 @@ export default function ClothesByTemperature({
             <List.Row key={cloth}>
               <Tag
                 onClick={handleKeywordClick}
-                className={`${selectedCloth === cloth ? `${isLowTemperature ? 'bg-blue-500' : 'bg-orange-500'} text-white` : 'bg-gray-100 text-gray-500'}`}
+                className={`${selectedCloth === cloth ? `${isLowTemperature ? 'bg-blue-500' : 'bg-orange-500'} text-white` : 'bg-gray-100 text-gray-500 font-medium'}`}
               >
                 {cloth}
               </Tag>

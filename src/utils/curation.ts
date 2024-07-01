@@ -86,7 +86,7 @@ export const getWeatherForecast = (weatherList: Weather[]) => {
       weatherForecast.isWideTempRange = true;
     }
 
-    if (weather.summary === WEATHER_DESCRIPTION['rain'].title) {
+    if (weather.title === WEATHER_DESCRIPTION['rain'].title) {
       weatherForecast.isPossibleToRain = true;
     }
 

@@ -27,3 +27,18 @@ export const isToday = (timestamp: number) => {
     today.getDate() === currentDate.getDate()
   );
 };
+
+export const getDayTime = () => {
+  const currentDate = dayjs();
+  const currentHour = currentDate.hour();
+
+  if (currentHour >= 5 && currentHour <= 6) {
+    return 'sunrise';
+  } else if (currentHour >= 7 && currentHour <= 17) {
+    return 'day';
+  } else if (currentHour >= 18 && currentHour <= 19) {
+    return 'sunset';
+  } else {
+    return 'night';
+  }
+};

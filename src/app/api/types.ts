@@ -21,11 +21,22 @@ export interface ShoppingListResponse {
 
 export interface Weather {
   time: number;
-  summary: string;
+  summary: WeatherSummary;
+  title: string;
   temperatureHigh: number;
   temperatureLow: number;
   icon: string;
 }
+
+export type WeatherSummary =
+  | 'clear'
+  | 'partly cloudy'
+  | 'cloudy'
+  | 'rain'
+  | 'snow'
+  | 'sleet'
+  | 'wind'
+  | 'fog';
 
 export interface WeatherListResponse {
   daily: {

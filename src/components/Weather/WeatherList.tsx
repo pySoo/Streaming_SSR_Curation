@@ -11,9 +11,11 @@ import WeatherItem from './WeatherItem';
 export default function WeatherList() {
   const { data: weatherList } = useGetWeatherList();
   const setWeatherList = useWeatherStore((state) => state.setWeatherList);
+  const setCurrentWeather = useWeatherStore((state) => state.setCurrentWeather);
 
   useEffect(() => {
     setWeatherList(weatherList ?? []);
+    setCurrentWeather(weatherList?.[0] ?? null);
   }, [weatherList]);
 
   if (weatherList == null) return null;

@@ -17,7 +17,7 @@ export default function Tag({
   return (
     <button
       className={$(
-        `w-fit rounded-lg px-2.5 py-0.5 transition-colors cursor-pointer ${TYPE_VARIANTS[variant]} ${SIZE_VARIANTS[size]}`,
+        `w-fit rounded-lg px-2.5 py-0.5 transition-colors cursor-pointer border-[1px] border-white/20 shadow-md ${TYPE_VARIANTS[variant]} ${SIZE_VARIANTS[size]}`,
         className,
       )}
       {...props}

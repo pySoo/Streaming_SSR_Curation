@@ -8,7 +8,7 @@ interface Props {
 
 export default function CurationListSkeleton({ variant = 'clothes' }: Props) {
   return (
-    <List className={`grid ${SKELETON_VARIANT[variant].className}`}>
+    <List className={`grid grid-item ${SKELETON_VARIANT[variant].className}`}>
       {[...Array(SKELETON_VARIANT[variant].arrayLength)].map((_, index) => (
         <List
           key={index}

@@ -4,7 +4,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#1360D1',
+        primary: '#5FA5F9',
+      },
+      zIndex: {
+        contents: 10,
+        header: 20,
+        navigation: 20,
+        highlight: 50,
+      },
+      maxWidth: {
+        tablet: '600px',
+      },
+      padding: {
+        navigation: '70px',
       },
     },
   },
