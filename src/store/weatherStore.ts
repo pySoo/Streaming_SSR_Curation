@@ -4,13 +4,18 @@ import { devtools } from 'zustand/middleware';
 import { Weather } from '@/app/api/types';
 
 interface Props {
+  currentWeather: Weather | null;
   weatherList: Weather[];
+  setCurrentWeather: (currentWeather: Weather | null) => void;
   setWeatherList: (weatherList: Weather[]) => void;
 }
 
 const useWeatherStore = create<Props>()(
   devtools((set) => ({
+    currentWeather: null,
     weatherList: [],
+    setCurrentWeather: (currentWeather: Weather | null) =>
+      set({ currentWeather }),
     setWeatherList: (weatherList: Weather[]) => set({ weatherList }),
   })),
 );

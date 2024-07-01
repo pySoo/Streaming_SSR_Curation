@@ -7,10 +7,9 @@ import ClothesCuration from './Clothes/ClothesCuration';
 import CosmeticCuration from './Cosmetic/CosmeticCuration';
 
 export default function CurationSection() {
-  const weatherList = useWeatherStore((state) => state.weatherList);
-  const todayWeather = weatherList[0];
+  const currentWeather = useWeatherStore((state) => state.currentWeather);
 
-  if (todayWeather == null) return null;
+  if (currentWeather == null) return null;
 
   return (
     <section>
