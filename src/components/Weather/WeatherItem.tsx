@@ -17,9 +17,9 @@ export default function WeatherItem({ weather }: WeatherItemProps) {
   const isTodayWeather = isToday(time);
 
   return (
-    <List.Row className='w-[140px] h-[160px] flex flex-col justify-center items-center shrink-0 border-[1px] border-gray-200 rounded-lg py-2 px-4'>
+    <List.Row className='w-[140px] h-[160px] flex flex-col justify-center items-center shrink-0 border-[1px] border-white/30 rounded-lg py-2 px-4 bg-[#277ecf]/20'>
       <Text
-        className={`${isTodayWeather ? 'text-primary font-medium' : 'text-gray-500'}`}
+        className={`${isTodayWeather ? 'text-blue-300 font-medium' : 'text-gray-300'}`}
       >
         {convertTimestampToDate(time)}
       </Text>

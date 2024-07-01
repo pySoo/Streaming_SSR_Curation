@@ -27,8 +27,8 @@ export default function Text({
 }
 
 const TEXT_VARIANT = {
-  title: 'text-2xl font-semibold mb-3',
-  subtitle: 'text-lg font-semibold mb-2',
-  body: 'text-md font-normal',
-  caption: 'text-sm text-gray-400',
+  title: 'text-2xl font-semibold mb-3 text-white',
+  subtitle: 'text-lg font-semibold mb-2 text-white',
+  body: 'text-md font-normal text-white',
+  caption: 'text-sm text-[#eee]',
 };

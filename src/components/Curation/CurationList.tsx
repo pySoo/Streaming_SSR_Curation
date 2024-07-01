@@ -16,7 +16,7 @@ export default function CurationList({ query, display = 9, className }: Props) {
   if (productList == null) return null;
 
   return (
-    <List className={`grid grid-cols-3 ${className}`}>
+    <List className={`grid grid-item grid-cols-3 ${className}`}>
       {productList.map((product, index) => (
         <List.Row
           key={product.productId + index}
