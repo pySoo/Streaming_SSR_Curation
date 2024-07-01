@@ -12,7 +12,7 @@ interface WeatherItemProps {
 }
 
 export default function WeatherItem({ weather }: WeatherItemProps) {
-  const { time, summary, icon, temperatureHigh, temperatureLow } = weather;
+  const { time, title, icon, temperatureHigh, temperatureLow } = weather;
 
   const isTodayWeather = isToday(time);
 
@@ -30,7 +30,7 @@ export default function WeatherItem({ weather }: WeatherItemProps) {
         src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
         alt={`weather-image`}
       />
-      <Text variant='caption'>{summary}</Text>
+      <Text variant='caption'>{title}</Text>
       <Stack className='flex flex-col items-center text-sm mt-2'>
         <Text
           as='span'

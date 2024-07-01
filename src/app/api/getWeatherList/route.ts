@@ -30,8 +30,9 @@ export async function GET() {
 
       return {
         time,
+        summary: summary.toLowerCase(),
         icon: weatherStatus?.icon ?? WEATHER_DESCRIPTION['clear'].icon,
-        summary: weatherStatus?.title ?? '정보 없음',
+        title: weatherStatus?.title ?? '정보 없음',
         temperatureHigh: Math.round(temperatureHigh),
         temperatureLow: Math.round(temperatureLow),
       };
