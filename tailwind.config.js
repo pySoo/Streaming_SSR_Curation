@@ -6,6 +6,12 @@ module.exports = {
       colors: {
         primary: '#5FA5F9',
       },
+      zIndex: {
+        contents: 10,
+        header: 20,
+        navigation: 20,
+        highlight: 50,
+      },
     },
   },
   plugins: [],
