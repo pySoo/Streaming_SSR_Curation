@@ -12,6 +12,12 @@ module.exports = {
         navigation: 20,
         highlight: 50,
       },
+      maxWidth: {
+        tablet: '600px',
+      },
+      padding: {
+        navigation: '70px',
+      },
     },
   },
   plugins: [],
