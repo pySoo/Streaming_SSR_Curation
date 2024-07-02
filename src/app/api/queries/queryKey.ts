@@ -3,6 +3,7 @@ export const QUERY_KEYS = {
     LIST: 'SHOPPING_LIST',
   },
   WEATHER: {
+    CURRENT: 'WEATHER_CURRENT',
     LIST: 'WEATHER_LIST',
   },
 } as const;
