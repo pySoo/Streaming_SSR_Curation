@@ -28,6 +28,10 @@ export interface Weather {
   icon: string;
 }
 
+export interface CurrentWeather extends Weather {
+  temperature: number;
+}
+
 export type WeatherSummary =
   | 'clear'
   | 'partly cloudy'
@@ -42,6 +46,10 @@ export interface WeatherListResponse {
   daily: {
     data: Weather[];
   };
+}
+
+export interface CurrentWeatherResponse {
+  currently: CurrentWeather;
 }
 
 export interface WeatherDescription {
