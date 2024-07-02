@@ -1,5 +1,7 @@
 import { ButtonHTMLAttributes } from 'react';
 
+import { $ } from '@/utils/core';
+
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary';
   size?: 'small' | 'medium' | 'large';
@@ -14,7 +16,10 @@ export default function Button({
 }: Props) {
   return (
     <button
-      className={`flex justify-center items-center rounded-md font-medium disabled:bg-gray-300 whitespace-nowrap ${TYPE_VARIANTS[variant]} ${SIZE_VARIANTS[size]} ${className}`}
+      className={$(
+        `flex justify-center items-center rounded-md font-medium disabled:bg-gray-300 whitespace-nowrap ${TYPE_VARIANTS[variant]} ${SIZE_VARIANTS[size]}`,
+        className,
+      )}
       {...props}
     />
   );

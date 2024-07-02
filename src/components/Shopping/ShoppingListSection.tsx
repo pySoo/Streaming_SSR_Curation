@@ -33,7 +33,7 @@ export default function ShoppingListSection({ query }: Props) {
   const { pages: shoppingList } = data;
   return (
     <section>
-      <List className='grid grid-cols-2'>
+      <List className='grid grid-item grid-cols-2'>
         {shoppingList.map((product, index) => (
           <List.Row
             key={product.productId + index}
