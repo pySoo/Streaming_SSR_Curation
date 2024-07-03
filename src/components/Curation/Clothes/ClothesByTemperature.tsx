@@ -72,7 +72,10 @@ export default function ClothesByTemperature({
         <AsyncBoundary
           suspenseFallback={<CurationSkeleton.ClothesCurationList />}
         >
-          <CurationList query={selectedCloth} />
+          <CurationList
+            query={selectedCloth}
+            className='grid-cols-2 sm:grid-cols-3'
+          />
         </AsyncBoundary>
       )}
     </Stack>

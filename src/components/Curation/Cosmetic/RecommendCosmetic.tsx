@@ -45,7 +45,7 @@ export default function RecommendCosmetic() {
               <CurationList
                 query={query}
                 display={4}
-                className='grid-cols-4'
+                className='grid-cols-2 sm:grid-cols-4'
               />
             </AsyncBoundary>
           </Stack>
