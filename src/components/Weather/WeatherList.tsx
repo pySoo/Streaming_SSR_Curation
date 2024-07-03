@@ -1,22 +1,12 @@
 'use client';
 
-import { useEffect } from 'react';
-
 import { useGetWeatherList } from '@/hooks/apis/getWeatherList';
-import useWeatherStore from '@/store/weatherStore';
 
 import List from '../Shared/Layout/List';
 import WeatherItem from './WeatherItem';
 
 export default function WeatherList() {
   const { data: weatherList } = useGetWeatherList();
-  const setWeatherList = useWeatherStore((state) => state.setWeatherList);
-  const setCurrentWeather = useWeatherStore((state) => state.setCurrentWeather);
-
-  useEffect(() => {
-    setWeatherList(weatherList ?? []);
-    setCurrentWeather(weatherList?.[0] ?? null);
-  }, [weatherList]);
 
   if (weatherList == null) return null;
 
