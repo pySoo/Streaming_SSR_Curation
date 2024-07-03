@@ -54,11 +54,25 @@ export const getCurationListByWeather = (weatherList: Weather[]) => {
     });
   }
 
-  if (weatherForecast.isPossibleToRain) {
+  if (weatherForecast.rainyDays >= 1) {
     curationList.push({
-      keyword: '비가 올 수 있어요',
+      keyword: '비가 내릴 예정이에요',
       description: '우산을 미리 챙겨둘까요? ☔️',
       query: '우산',
+    });
+  }
+
+  if (weatherForecast.rainyDays >= 5) {
+    curationList.push({
+      keyword: '장맛비에 주의하세요',
+      description: '꿉꿉한 실내 습기를 제거해보아요 🌧',
+      query: '습기제거제',
+    });
+  } else if (weatherForecast.rainyDays >= 3) {
+    curationList.push({
+      keyword: '3일 이상 비가 내려요',
+      description: '비에 젖지 않을 신발을 추천해요 🥾',
+      query: '레인부츠',
     });
   }
 
@@ -76,7 +90,7 @@ export const getCurationListByWeather = (weatherList: Weather[]) => {
 export const getWeatherForecast = (weatherList: Weather[]) => {
   const weatherForecast = {
     isWideTempRange: false,
-    isPossibleToRain: false,
+    rainyDays: 0,
     lowTemperature: Number.MAX_SAFE_INTEGER,
     highTemperature: Number.MIN_SAFE_INTEGER,
   };
@@ -87,7 +101,7 @@ export const getWeatherForecast = (weatherList: Weather[]) => {
     }
 
     if (weather.title === WEATHER_DESCRIPTION['rain'].title) {
-      weatherForecast.isPossibleToRain = true;
+      weatherForecast.rainyDays += 1;
     }
 
     if (weather.temperatureLow < weatherForecast.lowTemperature) {

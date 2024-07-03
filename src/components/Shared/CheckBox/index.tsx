@@ -14,7 +14,7 @@ export default function Checkbox({ value, size = 25, onChange }: Props) {
   return (
     <button
       onClick={toggleValue}
-      className={`${value ? 'text-[#ED4855]' : 'text-gray-500'}`}
+      className={`${value ? 'text-highlight' : 'text-gray-500'}`}
       style={{
         filter: 'drop-shadow(#ccc 0.1rem 0.1rem 0.05rem)',
       }}

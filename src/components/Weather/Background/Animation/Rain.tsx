@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 
+import { useResize } from '@/hooks/useResize';
+
 interface RainDrops {
   left: number;
   duration: number;
@@ -10,12 +12,13 @@ interface RainDrops {
 
 export default function Rain() {
   const [rainList, setRainList] = useState<RainDrops[]>([]);
+  const { width } = useResize();
 
   const generateRainList = () => {
     const newRainList = [];
 
     for (let i = 0; i < 100; i++) {
-      const left = Math.floor(Math.random() * window.innerWidth);
+      const left = Math.floor(Math.random() * width);
       const duration = 0.7 + Math.random() * 0.3;
       const delay = Math.random() * 5;
 
@@ -31,7 +34,7 @@ export default function Rain() {
 
   useEffect(() => {
     generateRainList();
-  }, []);
+  }, [width]);
 
   return (
     <div className='absolute w-full h-full overflow-hidden top-0 opacity-50 pointer-events-none'>
@@ -44,7 +47,7 @@ export default function Rain() {
             animationDelay: item.delay + 's',
             animationDuration: item.duration + 's',
           }}
-        ></span>
+        />
       ))}
     </div>
   );

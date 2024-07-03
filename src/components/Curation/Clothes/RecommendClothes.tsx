@@ -7,20 +7,20 @@ import Stack from '../../Shared/Layout/Stack';
 import ClothesByTemperature from './ClothesByTemperature';
 
 export default function RecommendClothes() {
-  const currentWeather = useWeatherStore((state) => state.currentWeather);
+  const todayWeather = useWeatherStore((state) => state.todayWeather);
 
-  if (currentWeather == null) return null;
+  if (todayWeather == null) return null;
 
   return (
     <Stack className='gap-10'>
       <ClothesByTemperature
-        temperature={currentWeather.temperatureLow}
-        keywords={getClothesByTemperature(currentWeather.temperatureLow)}
+        temperature={todayWeather.temperatureLow}
+        keywords={getClothesByTemperature(todayWeather.temperatureLow)}
         isLowTemperature
       />
       <ClothesByTemperature
-        temperature={currentWeather.temperatureHigh}
-        keywords={getClothesByTemperature(currentWeather.temperatureHigh)}
+        temperature={todayWeather.temperatureHigh}
+        keywords={getClothesByTemperature(todayWeather.temperatureHigh)}
         isLowTemperature={false}
       />
     </Stack>

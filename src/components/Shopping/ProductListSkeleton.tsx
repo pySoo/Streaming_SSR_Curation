@@ -1,14 +1,16 @@
-import List from '../../Shared/Layout/List';
-import Stack from '../../Shared/Layout/Stack';
-import Skeleton from '../../Shared/Skeleton';
+import List from '../Shared/Layout/List';
+import Stack from '../Shared/Layout/Stack';
+import Skeleton from '../Shared/Skeleton';
 
 interface Props {
-  variant?: 'clothes' | 'cosmetic';
+  variant?: 'clothes' | 'cosmetic' | 'shopping';
 }
 
-export default function CurationListSkeleton({ variant = 'clothes' }: Props) {
+export default function ProductListSkeleton({ variant = 'clothes' }: Props) {
   return (
-    <List className={`grid grid-item ${SKELETON_VARIANT[variant].className}`}>
+    <List
+      className={`w-full grid grid-item ${SKELETON_VARIANT[variant].className}`}
+    >
       {[...Array(SKELETON_VARIANT[variant].arrayLength)].map((_, index) => (
         <List
           key={index}
@@ -26,11 +28,15 @@ export default function CurationListSkeleton({ variant = 'clothes' }: Props) {
 
 const SKELETON_VARIANT = {
   clothes: {
-    arrayLength: 9,
+    arrayLength: 6,
     className: 'grid-cols-3',
   },
   cosmetic: {
     arrayLength: 4,
     className: 'grid-cols-4',
+  },
+  shopping: {
+    arrayLength: 10,
+    className: 'grid-cols-2',
   },
 };

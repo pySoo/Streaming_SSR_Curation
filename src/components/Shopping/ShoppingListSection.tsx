@@ -4,10 +4,9 @@ import { useGetShoppingList } from '@/hooks/apis/getShoppingList';
 import { useIntersect } from '@/hooks/useIntersect';
 
 import List from '../Shared/Layout/List';
-import Stack from '../Shared/Layout/Stack';
-import Spinner from '../Shared/Spinner';
 import ProductCard from './ProductCard';
 import ProductLikeButton from './ProductLikeButton';
+import ProductListSkeleton from './ProductListSkeleton';
 
 interface Props {
   query?: string;
@@ -33,7 +32,7 @@ export default function ShoppingListSection({ query }: Props) {
   const { pages: shoppingList } = data;
   return (
     <section>
-      <List className='grid grid-cols-2'>
+      <List className='grid grid-item grid-cols-2'>
         {shoppingList.map((product, index) => (
           <List.Row
             key={product.productId + index}
@@ -47,11 +46,7 @@ export default function ShoppingListSection({ query }: Props) {
         ))}
       </List>
       {shoppingList && <div ref={intersectRef} />}
-      {isFetching && (
-        <Stack className='relative'>
-          <Spinner />
-        </Stack>
-      )}
+      {isFetching && <ProductListSkeleton variant='shopping' />}
     </section>
   );
 }
