@@ -74,3 +74,21 @@
     transform: rotate(90deg) translateX(1800px);
   }
 }
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+  height: 1rem;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-appearance: none;
+}
+
+::-webkit-scrollbar-thumb {
+  min-height: 5rem;
+  background-color: #334461;
+  border-radius: 0.4rem;
+  &:hover {
+    cursor: pointer;
+  }
+}
