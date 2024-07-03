@@ -2,7 +2,7 @@ import Stack from '@/components/Shared/Layout/Stack';
 import Skeleton from '@/components/Shared/Skeleton';
 import Text from '@/components/Shared/Text';
 
-import CurationListSkeleton from './CurationListSkeleton';
+import ProductListSkeleton from '../../Shopping/ProductListSkeleton';
 
 export default function CurationSkeleton() {
   return (
@@ -40,9 +40,9 @@ CurationSkeleton.CosmeticCuration = () => (
 );
 
 CurationSkeleton.ClothesCurationList = () => (
-  <CurationListSkeleton variant='clothes' />
+  <ProductListSkeleton variant='clothes' />
 );
 
 CurationSkeleton.CosmeticCurationList = () => (
-  <CurationListSkeleton variant='cosmetic' />
+  <ProductListSkeleton variant='cosmetic' />
 );
