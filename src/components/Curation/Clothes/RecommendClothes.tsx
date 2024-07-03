@@ -12,7 +12,7 @@ export default function RecommendClothes() {
   if (todayWeather == null) return null;
 
   return (
-    <Stack className='gap-10'>
+    <Stack className='gap-12'>
       <ClothesByTemperature
         temperature={todayWeather.temperatureLow}
         keywords={getClothesByTemperature(todayWeather.temperatureLow)}
