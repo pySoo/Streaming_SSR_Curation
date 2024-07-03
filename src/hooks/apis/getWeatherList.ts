@@ -44,12 +44,5 @@ export const useGetWeatherList = () => {
 };
 
 export const useGetCurrentWeather = () => {
-  const setCurrentWeather = useWeatherStore((state) => state.setCurrentWeather);
-
-  return useQuery([QUERY_KEYS.WEATHER.CURRENT], getCurrentWeather, {
-    select: (data) => {
-      setCurrentWeather(data);
-      return data;
-    },
-  });
+  return useQuery([QUERY_KEYS.WEATHER.CURRENT], getCurrentWeather);
 };

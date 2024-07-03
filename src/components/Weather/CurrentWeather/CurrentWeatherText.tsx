@@ -1,12 +1,20 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import Stack from '@/components/Shared/Layout/Stack';
 import Text from '@/components/Shared/Text';
 import { useGetCurrentWeather } from '@/hooks/apis/getWeatherList';
+import useWeatherStore from '@/store/weatherStore';
 
 export default function CurrentWeatherText() {
   const cityName = '서울특별시';
   const { data: currentWeather } = useGetCurrentWeather();
+  const setCurrentWeather = useWeatherStore((state) => state.setCurrentWeather);
+
+  useEffect(() => {
+    setCurrentWeather(currentWeather ?? null);
+  }, [currentWeather]);
 
   if (currentWeather == null) return null;
 
