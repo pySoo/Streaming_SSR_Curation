@@ -31,7 +31,7 @@ export default function ShoppingListSection({ query }: Props) {
 
   const { pages: shoppingList } = data;
   return (
-    <section>
+    <section className='pb-navigation'>
       <List className='grid grid-item grid-cols-2'>
         {shoppingList.map((product, index) => (
           <List.Row

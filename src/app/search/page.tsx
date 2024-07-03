@@ -6,10 +6,7 @@ import SearchSection from './SearchSection';
 
 export default function SearchPage() {
   return (
-    <PageLayout
-      className='pb-navigation'
-      background={<WeatherBackground />}
-    >
+    <PageLayout background={<WeatherBackground />}>
       <SearchSection />
       <Navigation />
     </PageLayout>
