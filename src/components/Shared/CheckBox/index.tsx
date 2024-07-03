@@ -6,7 +6,7 @@ interface Props {
   onChange: (value: boolean) => void;
 }
 
-export default function Checkbox({ value, size = 25, onChange }: Props) {
+export default function Checkbox({ value, size = 30, onChange }: Props) {
   const toggleValue = () => {
     onChange(!value);
   };
