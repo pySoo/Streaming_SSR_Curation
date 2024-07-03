@@ -2,6 +2,7 @@ import CurationSection from '@/components/Curation/CurationSection';
 import CurationSkeleton from '@/components/Curation/Skeleton/CurationSkeleton';
 import Navigation from '@/components/Navigation';
 import AsyncBoundary from '@/components/Shared/AsyncBoundary';
+import Border from '@/components/Shared/Border';
 import PageLayout from '@/components/Shared/Layout/PageLayout';
 import Stack from '@/components/Shared/Layout/Stack';
 import WeatherBackground from '@/components/Weather/Background/WeatherBackground';
@@ -25,6 +26,7 @@ export default function Main() {
           <AsyncBoundary suspenseFallback={<WeatherListSkeleton />}>
             <HydratedWeatherList />
           </AsyncBoundary>
+          <Border size={1} />
           <AsyncBoundary suspenseFallback={<CurationSkeleton />}>
             <CurationSection />
           </AsyncBoundary>
