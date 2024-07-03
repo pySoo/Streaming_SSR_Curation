@@ -1,5 +1,6 @@
 'use client';
 
+import Spacing from '@/components/Shared/Spacing';
 import useWeatherStore from '@/store/weatherStore';
 import { getCurationListByWeather } from '@/utils/curation';
 
@@ -30,7 +31,8 @@ export default function RecommendCosmetic() {
           </Tag>
         ))}
       </Stack.Row>
-      <Stack className='mt-5 gap-10'>
+      <Spacing size={30} />
+      <Stack className='gap-10'>
         {curationList.map(({ description, query }) => (
           <Stack
             key={query}

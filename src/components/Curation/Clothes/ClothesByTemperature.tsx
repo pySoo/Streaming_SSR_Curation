@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import Spacing from '@/components/Shared/Spacing';
 import { getClothesByTemperature } from '@/utils/curation';
 
 import AsyncBoundary from '../../Shared/AsyncBoundary';
@@ -52,7 +53,8 @@ export default function ClothesByTemperature({
             에 맞는 옷을 추천해드릴게요
           </Text>
         </Stack.Row>
-        <List className='flex-row gap-2 ml-auto mt-2 mb-4'>
+        <Spacing size={15} />
+        <List className='flex-row gap-2 ml-auto'>
           {matchedClothes.map((cloth) => (
             <List.Row key={cloth}>
               <Tag
@@ -64,6 +66,7 @@ export default function ClothesByTemperature({
             </List.Row>
           ))}
         </List>
+        <Spacing size={20} />
       </Stack>
       {selectedCloth && (
         <AsyncBoundary
