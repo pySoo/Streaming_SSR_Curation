@@ -11,6 +11,7 @@ export default function WeatherBackground() {
   const weatherSummary = currentWeather?.summary;
 
   const isDay = getDayTime() === 'day';
+  const skyColor = getCurrentSkyColor();
 
   const cloudCover =
     weatherSummary === 'cloudy'
@@ -18,10 +19,6 @@ export default function WeatherBackground() {
       : weatherSummary === 'partly cloudy'
         ? 30
         : 0;
-
-  const skyColor = getCurrentSkyColor({
-    isRaining: weatherSummary === 'rain',
-  });
 
   return (
     <div
