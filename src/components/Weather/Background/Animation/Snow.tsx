@@ -1,6 +1,8 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import { useResize } from '@/hooks/useResize';
 
 interface SnowDrops {
   left: number;
@@ -10,12 +12,13 @@ interface SnowDrops {
 
 export default function Snow() {
   const [snowList, setSnowList] = useState<SnowDrops[]>([]);
+  const { width } = useResize();
 
   const generateSnowList = () => {
-    const newSnowList = [];
+    const snowList = [];
 
     for (let i = 0; i < 100; i++) {
-      const left = Math.floor(Math.random() * window.innerWidth);
+      const left = Math.floor(Math.random() * width);
       const duration = 3 + Math.random() * 0.3;
       const delay = Math.random() * 5;
 
@@ -24,14 +27,14 @@ export default function Snow() {
         duration,
         delay,
       };
-      newSnowList.push(snowdrop);
+      snowList.push(snowdrop);
     }
-    setSnowList(newSnowList);
+    setSnowList(snowList);
   };
 
   useEffect(() => {
     generateSnowList();
-  }, []);
+  }, [width]);
 
   return (
     <div className='absolute w-full h-full overflow-hidden top-0 opacity-50 pointer-events-none'>
@@ -44,7 +47,7 @@ export default function Snow() {
             animationDelay: item.delay + 's',
             animationDuration: item.duration + 's',
           }}
-        ></span>
+        />
       ))}
     </div>
   );
