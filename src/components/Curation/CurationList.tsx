@@ -10,7 +10,7 @@ interface Props {
   className?: string;
 }
 
-export default function CurationList({ query, display = 9, className }: Props) {
+export default function CurationList({ query, display = 6, className }: Props) {
   const { data: productList } = useCurationShoppingList({ query, display });
 
   if (productList == null) return null;
