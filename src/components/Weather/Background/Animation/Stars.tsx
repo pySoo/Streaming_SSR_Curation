@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface Star {
   x: number;
@@ -13,7 +13,7 @@ export default function Stars() {
   const [stars, setStars] = useState<Star[]>([]);
 
   const generateStarList = () => {
-    const newStarList = [];
+    const stars = [];
     const starCount = 200;
 
     for (let i = 0; i < starCount; i++) {
@@ -29,10 +29,10 @@ export default function Stars() {
         duration,
       };
 
-      newStarList.push(star);
+      stars.push(star);
     }
 
-    setStars(newStarList);
+    setStars(stars);
   };
 
   useEffect(() => {
