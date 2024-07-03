@@ -6,10 +6,7 @@ import LikeListSection from './LikeListSection';
 
 export default function LikePage() {
   return (
-    <PageLayout
-      className='pb-navigation'
-      background={<WeatherBackground />}
-    >
+    <PageLayout background={<WeatherBackground />}>
       <LikeListSection />
       <Navigation />
     </PageLayout>

@@ -29,11 +29,11 @@ export default function ProductListSkeleton({ variant = 'clothes' }: Props) {
 const SKELETON_VARIANT = {
   clothes: {
     arrayLength: 6,
-    className: 'grid-cols-3',
+    className: 'grid-cols-2 sm:grid-cols-3',
   },
   cosmetic: {
     arrayLength: 4,
-    className: 'grid-cols-4',
+    className: 'grid-cols-2 sm:grid-cols-4',
   },
   shopping: {
     arrayLength: 10,

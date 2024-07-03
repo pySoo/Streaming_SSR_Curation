@@ -6,7 +6,7 @@ interface Props {
   onChange: (value: boolean) => void;
 }
 
-export default function LikeButton({ value, size = 20, onChange }: Props) {
+export default function LikeButton({ value, size = 23, onChange }: Props) {
   const toggleValue = () => {
     onChange(!value);
   };

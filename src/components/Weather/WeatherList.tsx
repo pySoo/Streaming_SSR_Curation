@@ -11,7 +11,7 @@ export default function WeatherList() {
   if (weatherList == null) return null;
 
   return (
-    <List className='flex-row items-center gap-2 overflow-auto px-5 mx-[-20px]'>
+    <List className='flex-row items-center gap-2 overflow-auto px-5 mx-[-20px] scrollbar-hide'>
       {weatherList.map((weather) => (
         <WeatherItem
           key={weather.time}
