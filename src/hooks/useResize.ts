@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { useThrottle } from './useThrottle';
+
 interface WindowSize {
   width: number;
   height: number;
@@ -7,6 +9,7 @@ interface WindowSize {
 
 export const useResize = () => {
   const isClient = typeof window === 'object';
+  const throttle = useThrottle();
 
   const getSize = () => {
     if (!isClient) return { width: 0, height: 0 };
@@ -20,9 +23,9 @@ export const useResize = () => {
       return;
     }
 
-    const handleResize = () => {
+    const handleResize = throttle(() => {
       setWindowSize(getSize());
-    };
+    }, 300);
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
