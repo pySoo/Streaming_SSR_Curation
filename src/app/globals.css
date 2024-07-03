@@ -18,12 +18,12 @@
 
 .raindrop {
   width: 18px;
-  height: 3px;
+  height: 2px;
   border-radius: 50%;
   background: #ffffff;
   position: absolute;
   transform-origin: 100% 50%;
-  animation: drops 2s linear infinite;
+  animation: drops 1.5s linear infinite;
 }
 
 .star {
@@ -67,6 +67,6 @@
     transform: rotate(90deg) translateX(0);
   }
   to {
-    transform: rotate(90deg) translateX(calc(100vh + 20px));
+    transform: rotate(90deg) translateX(1800px);
   }
 }
