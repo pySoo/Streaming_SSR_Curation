@@ -1,8 +1,8 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ComponentProps } from 'react';
 
 import { $ } from '@/utils/core';
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface Props extends ComponentProps<'button'> {
   variant?: 'blue' | 'green';
   size?: 'small' | 'medium' | 'large';
   className?: string;

@@ -1,17 +1,16 @@
 import {
   Children,
   cloneElement,
+  ComponentProps,
   ForwardedRef,
   forwardRef,
-  HTMLAttributes,
-  InputHTMLAttributes,
   ReactElement,
   ReactNode,
 } from 'react';
 
 import useId from '@/hooks/useId';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+interface Props extends ComponentProps<'div'> {
   label?: ReactNode;
   children: ReactElement;
 }
@@ -31,7 +30,7 @@ export function TextField({ label, children, ...props }: Props) {
   );
 }
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends ComponentProps<'input'> {
   className?: string;
 }
 
@@ -50,7 +49,7 @@ TextField.Input = forwardRef(
   },
 );
 
-interface TextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
+interface TextareaProps extends ComponentProps<'textarea'> {
   className?: string;
 }
 
