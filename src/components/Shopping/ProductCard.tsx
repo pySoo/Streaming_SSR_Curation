@@ -55,6 +55,8 @@ export default function ProductCard({
           alt={`shopping-item-image-${productId}`}
           className='h-full aspect-square bg-gray-100 object-contain'
           priority={isPriority}
+          placeholder='blur'
+          blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=='
         />
       </Stack>
       <Stack className='mt-2'>
