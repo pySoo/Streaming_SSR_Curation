@@ -35,10 +35,10 @@ export default function ProductCard({
 
   return (
     <Stack
-      className='cursor-pointer'
+      className='w-full cursor-pointer'
       onClick={handleCardClick}
     >
-      <Stack className='relative max-h-[272px] overflow-hidden rounded-md'>
+      <Stack className='relative max-h-[300px] overflow-hidden rounded-md'>
         {right && (
           <div
             id='right'
@@ -53,10 +53,10 @@ export default function ProductCard({
           height={300}
           src={image}
           alt={`shopping-item-image-${productId}`}
-          className='h-full aspect-square bg-gray-100 object-contain'
           priority={isPriority}
           placeholder='blur'
           blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=='
+          className='w-full h-full aspect-square bg-gray-100 object-cover'
         />
       </Stack>
       <Stack className='mt-2'>

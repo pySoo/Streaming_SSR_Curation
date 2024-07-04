@@ -42,7 +42,7 @@ export default function ShoppingListSection({ query }: Props) {
         {shoppingList.map((product, index) => (
           <List.Row
             key={product.productId + index}
-            className='items-start'
+            className='w-full items-start'
           >
             <ProductCard
               product={product}
