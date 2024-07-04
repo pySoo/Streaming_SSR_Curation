@@ -1,15 +1,17 @@
 'use client';
 
-import useWeatherStore from '@/store/weatherStore';
+import { useGetWeatherList } from '@/hooks/apis/getWeatherList';
 import { getClothesByTemperature } from '@/utils/curation';
 
 import Stack from '../../Shared/Layout/Stack';
 import ClothesByTemperature from './ClothesByTemperature';
 
 export default function RecommendClothes() {
-  const todayWeather = useWeatherStore((state) => state.todayWeather);
+  const { data: weatherList } = useGetWeatherList();
 
-  if (todayWeather == null) return null;
+  if (weatherList == null) return null;
+
+  const todayWeather = weatherList[0];
 
   return (
     <Stack className='gap-12'>

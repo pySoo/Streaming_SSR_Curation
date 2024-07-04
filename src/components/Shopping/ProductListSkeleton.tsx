@@ -17,7 +17,7 @@ export default function ProductListSkeleton({ variant = 'clothes' }: Props) {
           className='gap-0'
         >
           <Stack>
-            <Skeleton className='w-full h-full max-h-[272px] aspect-square overflow-hidden rounded-md' />
+            <Skeleton className='w-full h-full max-h-[300px] aspect-square overflow-hidden rounded-md' />
           </Stack>
           <Skeleton className='mt-2 w-full h-[60px] rounded-md' />
         </List>

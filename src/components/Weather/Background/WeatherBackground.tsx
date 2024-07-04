@@ -1,13 +1,14 @@
 'use client';
 
-import useWeatherStore from '@/store/weatherStore';
+import { useGetCurrentWeather } from '@/hooks/apis/getWeatherList';
 import { getDayTime } from '@/utils/date';
 
 import { Cloud, Rain, Snow, Stars, Sun } from './Animation';
 import { getCurrentSkyColor } from './utils';
 
 export default function WeatherBackground() {
-  const currentWeather = useWeatherStore((state) => state.currentWeather);
+  const { data: currentWeather } = useGetCurrentWeather();
+
   const weatherSummary = currentWeather?.summary;
 
   const isDay = getDayTime() === 'day';

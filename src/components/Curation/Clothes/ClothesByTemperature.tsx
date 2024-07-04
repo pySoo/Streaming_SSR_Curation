@@ -75,6 +75,7 @@ export default function ClothesByTemperature({
           <CurationList
             query={selectedCloth}
             className='grid-cols-2 sm:grid-cols-3'
+            isPriority={isLowTemperature}
           />
         </AsyncBoundary>
       )}

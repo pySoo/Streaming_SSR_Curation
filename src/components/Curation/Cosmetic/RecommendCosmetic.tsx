@@ -1,7 +1,7 @@
 'use client';
 
 import Spacing from '@/components/Shared/Spacing';
-import useWeatherStore from '@/store/weatherStore';
+import { useGetWeatherList } from '@/hooks/apis/getWeatherList';
 import { getCurationListByWeather } from '@/utils/curation';
 
 import AsyncBoundary from '../../Shared/AsyncBoundary';
@@ -12,7 +12,7 @@ import CurationList from '../CurationList';
 import CurationSkeleton from '../Skeleton/CurationSkeleton';
 
 export default function RecommendCosmetic() {
-  const weatherList = useWeatherStore((state) => state.weatherList);
+  const { data: weatherList } = useGetWeatherList();
 
   if (weatherList == null) return null;
 
