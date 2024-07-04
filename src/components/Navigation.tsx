@@ -27,7 +27,7 @@ export default function Navigation({ children }: PropsWithChildren) {
   const headerPathname = headersList.get('x-pathname') || '';
 
   return (
-    <nav className='w-screen fixed bottom-0 left-0 bg-white shadow-md z-navigation'>
+    <nav className='w-screen fixed bottom-0 left-0 bg-lightGray shadow-md z-navigation'>
       <List className='max-w-tablet h-[50px] flex-row justify-center mx-auto border-t-[1px] border-gray-200'>
         {children ?? (
           <>
@@ -39,7 +39,7 @@ export default function Navigation({ children }: PropsWithChildren) {
                 >
                   <Link href={path}>
                     <Text
-                      className={`font-medium p-2 cursor-pointer ${path === headerPathname ? 'text-highlight font-semibold' : 'text-gray-400'}`}
+                      className={`font-medium p-2 cursor-pointer ${path === headerPathname ? 'text-navy font-semibold' : 'text-darkGray'}`}
                     >
                       {name}
                     </Text>

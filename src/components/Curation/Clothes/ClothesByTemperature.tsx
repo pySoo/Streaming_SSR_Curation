@@ -44,7 +44,7 @@ export default function ClothesByTemperature({
       <Stack>
         <Stack.Row className='items-end'>
           <Tag
-            className={`cursor-default text-white ${isLowTemperature ? 'bg-blue-400' : 'bg-orange-400'}`}
+            className={`cursor-default text-white ${isLowTemperature ? 'bg-primary' : 'bg-darkRed'}`}
           >{`${isLowTemperature ? '최저' : '최고'} 온도 ${temperature} °C`}</Tag>
           <Text
             variant='caption'
@@ -59,7 +59,7 @@ export default function ClothesByTemperature({
             <List.Row key={cloth}>
               <Tag
                 onClick={handleKeywordClick}
-                className={`${selectedCloth === cloth ? `${isLowTemperature ? 'bg-blue-500' : 'bg-orange-500'} text-white` : 'bg-gray-100 text-gray-500 font-medium'}`}
+                className={`${selectedCloth === cloth ? `${isLowTemperature ? 'bg-primary' : 'bg-darkRed'} text-white` : 'bg-gray-100 text-darkGray font-medium'}`}
               >
                 {cloth}
               </Tag>

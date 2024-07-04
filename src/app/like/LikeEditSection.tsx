@@ -42,7 +42,7 @@ export default function LikeEditSection() {
       <Stack>
         <Button
           variant='secondary'
-          className='w-fit px-1 font-semibold ml-auto'
+          className='w-fit px-1 font-semibold ml-auto text-highlight'
           onClick={toggleEditMode}
         >
           {isEditMode ? '취소' : '편집'}

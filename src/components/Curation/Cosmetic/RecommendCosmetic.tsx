@@ -25,7 +25,7 @@ export default function RecommendCosmetic() {
         {curationKeywords.map((keyword) => (
           <Tag
             key={keyword}
-            className='bg-blue-500 cursor-default'
+            className='bg-turquoise cursor-default'
           >
             {keyword}
           </Tag>
