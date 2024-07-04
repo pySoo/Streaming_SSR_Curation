@@ -1,10 +1,8 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ComponentProps } from 'react';
 
 import Button from '.';
 
-export default function FixedBottomCTA({
-  ...props
-}: ButtonHTMLAttributes<HTMLButtonElement>) {
+export default function FixedBottomCTA({ ...props }: ComponentProps<'button'>) {
   return (
     <div className='flex justify-center w-full fixed left-0 bottom-0 px-5'>
       <div className='w-full max-w-[425px] mx-auto pb-5 bg-white relative'>

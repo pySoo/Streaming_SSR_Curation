@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import { QUERY_KEYS } from '@/app/api/queries/queryKey';
 import { CurrentWeather, Weather } from '@/app/api/types';
-import useWeatherStore from '@/store/weatherStore';
+import { handleError } from '@/app/api/utils';
 
 export const getWeatherList = async () => {
   const response = await fetch(
@@ -10,7 +10,8 @@ export const getWeatherList = async () => {
   );
 
   if (!response.ok) {
-    console.error(response.status);
+    handleError(response);
+    return null;
   }
 
   const result: Weather[] = await response.json();
@@ -23,7 +24,8 @@ export const getCurrentWeather = async () => {
   );
 
   if (!response.ok) {
-    console.error(response.status);
+    handleError(response);
+    return null;
   }
 
   const result: CurrentWeather = await response.json();
@@ -31,16 +33,7 @@ export const getCurrentWeather = async () => {
 };
 
 export const useGetWeatherList = () => {
-  const setWeatherList = useWeatherStore((state) => state.setWeatherList);
-  const setTodayWeather = useWeatherStore((state) => state.setTodayWeather);
-
-  return useQuery([QUERY_KEYS.WEATHER.LIST], getWeatherList, {
-    select: (data) => {
-      setWeatherList(data);
-      setTodayWeather(data[0]);
-      return data;
-    },
-  });
+  return useQuery([QUERY_KEYS.WEATHER.LIST], getWeatherList);
 };
 
 export const useGetCurrentWeather = () => {

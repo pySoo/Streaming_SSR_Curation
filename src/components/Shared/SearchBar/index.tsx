@@ -3,27 +3,24 @@
 import { useSearch } from '@/hooks/useSearch';
 import { $ } from '@/utils/core';
 
+import Button from '../Button';
 import { TextField } from '../TextField';
 
 interface Props {
   className?: string;
-  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
   onSubmit: (query: string) => void;
 }
 
-export default function SearchBar({ className, inputProps, onSubmit }: Props) {
-  const { inputRef, handleSubmit, setSearchParams } = useSearch({ onSubmit });
+export default function SearchBar({ className, onSubmit }: Props) {
+  const { inputRef, handleSubmit } = useSearch({ onSubmit });
 
   return (
     <form
-      className={$('w-full', className)}
+      className={$('flex w-full gap-2', className)}
       onSubmit={handleSubmit}
     >
-      <TextField.Input
-        ref={inputRef}
-        onChange={setSearchParams}
-        {...inputProps}
-      />
+      <TextField.Input ref={inputRef} />
+      <Button>검색</Button>
     </form>
   );
 }

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .grid-item {
-  @apply border-[1px] border-white/20 rounded-md bg-[#094F91]/20 overflow-hidden p-4;
+  @apply border-[1px] border-white/20 rounded-md bg-[#094F91]/20 overflow-hidden p-3;
 }
 
 .shadow-text {

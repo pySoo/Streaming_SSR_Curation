@@ -2,13 +2,12 @@ import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 
 import { QUERY_KEYS } from '@/app/api/queries/queryKey';
 import { ShoppingListResponse } from '@/app/api/types';
+import { handleError } from '@/app/api/utils';
 import useLikeStore from '@/store/likeStore';
-
-const MOCK_QUERY = 'summer';
 
 export const getShoppingList = async (
   page: number = 1,
-  query: string = MOCK_QUERY,
+  query: string,
   display: number = 10,
 ) => {
   const response = await fetch(
@@ -16,14 +15,15 @@ export const getShoppingList = async (
   );
 
   if (!response.ok) {
-    console.error(response.status);
+    handleError(response);
+    return null;
   }
 
   const result: ShoppingListResponse = await response.json();
   return result;
 };
 
-export const useGetShoppingList = ({ query }: { query?: string } = {}) => {
+export const useGetShoppingList = ({ query }: { query: string }) => {
   const likeList = useLikeStore((state) => state.likeList);
 
   return useInfiniteQuery(
@@ -31,6 +31,8 @@ export const useGetShoppingList = ({ query }: { query?: string } = {}) => {
     ({ pageParam = 1 }) => getShoppingList(pageParam, query),
     {
       getNextPageParam: (lastPage) => {
+        if (lastPage === null) return false;
+
         const { start, total, display } = lastPage;
 
         const nextPage = start + 1;
@@ -40,6 +42,8 @@ export const useGetShoppingList = ({ query }: { query?: string } = {}) => {
       },
       select: (data) => ({
         pages: data.pages.flatMap((result) => {
+          if (result === null) return [];
+
           const filteredProduct = result.items.map((item) => {
             const isLikedItem = likeList.findIndex(
               (likeItem) => likeItem.productId === item.productId,
@@ -71,6 +75,8 @@ export const useCurationShoppingList = ({
     () => getShoppingList(1, query, display),
     {
       select: (data) => {
+        if (data === null) return [];
+
         const filteredProduct = data.items.map((item) => {
           const isLikedItem = likeList.findIndex(
             (likeItem) => likeItem.productId === item.productId,
