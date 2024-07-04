@@ -14,7 +14,7 @@ module.exports = {
         highlight: 50,
       },
       maxWidth: {
-        tablet: '600px',
+        tablet: '768px',
       },
       padding: {
         navigation: '70px',
