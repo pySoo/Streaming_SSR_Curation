@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { ERROR_MESSAGE } from '@/app/api/constants';
 import { QUERY_KEYS } from '@/app/api/queries/queryKey';
 import { CurrentWeather, Weather } from '@/app/api/types';
-import { toastify } from '@/components/Shared/Toast/utils';
+import { handleError } from '@/app/api/utils';
 
 export const getWeatherList = async () => {
   const response = await fetch(
@@ -11,7 +10,7 @@ export const getWeatherList = async () => {
   );
 
   if (!response.ok) {
-    toastify.error(ERROR_MESSAGE[response.status]);
+    handleError(response);
     return null;
   }
 
@@ -25,7 +24,7 @@ export const getCurrentWeather = async () => {
   );
 
   if (!response.ok) {
-    toastify.error(ERROR_MESSAGE[response.status]);
+    handleError(response);
     return null;
   }
 
