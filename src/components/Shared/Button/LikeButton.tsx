@@ -13,6 +13,7 @@ export default function LikeButton({ value, size = 23, onChange }: Props) {
 
   return (
     <button
+      aria-label='like-button'
       onClick={toggleValue}
       className={`${value ? 'text-[#ED4855]' : 'text-white'}`}
       style={{
