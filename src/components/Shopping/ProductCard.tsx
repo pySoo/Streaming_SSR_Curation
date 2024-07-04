@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ReactNode } from 'react';
+import { MouseEvent, ReactNode } from 'react';
 
 import { Product } from '@/app/api/types';
 import { convertToKRPrice, removeMarkdownBoldTag } from '@/utils/format';
@@ -13,15 +13,37 @@ interface Props {
 }
 
 export default function ProductCard({ product, right }: Props) {
-  const { productId, image, title, lprice } = product;
+  const { productId, image, title, lprice, link } = product;
+
+  const handleCardClick = (event: MouseEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLElement;
+    const isProductItem = [
+      'product-image',
+      'product-title',
+      'product-price',
+    ].includes(target.id);
+
+    if (isProductItem) {
+      window.open(link, '_blank');
+    }
+  };
 
   return (
-    <Stack>
+    <Stack
+      className='cursor-pointer'
+      onClick={handleCardClick}
+    >
       <Stack className='relative max-h-[272px] overflow-hidden rounded-md'>
         {right && (
-          <div className='absolute right-[12px] top-[12px]'>{right}</div>
+          <div
+            id='right'
+            className='absolute right-[12px] top-[12px]'
+          >
+            {right}
+          </div>
         )}
         <Image
+          id='product-image'
           width={300}
           height={300}
           src={image}
@@ -30,10 +52,14 @@ export default function ProductCard({ product, right }: Props) {
         />
       </Stack>
       <Stack className='mt-2'>
-        <Text className='text-sm font-semibold'>
+        <Text
+          id='product-price'
+          className='text-sm font-semibold'
+        >
           최저 {convertToKRPrice(lprice)}원
         </Text>
         <Text
+          id='product-title'
           variant='caption'
           className='line-clamp-2'
         >
