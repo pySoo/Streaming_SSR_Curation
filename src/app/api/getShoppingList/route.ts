@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 import {
-  ERROR_MESSAGE,
   SHOPPING_API_CLIENT_ID,
   SHOPPING_API_CLIENT_SECRET,
 } from '../constants';
@@ -12,10 +11,9 @@ export async function GET(request: NextRequest) {
   const display = request.nextUrl.searchParams.get('display');
 
   if (SHOPPING_API_CLIENT_ID == null || SHOPPING_API_CLIENT_SECRET == null)
-    return;
+    return NextResponse.json(null, { status: 403 });
 
-  if (query == null)
-    return NextResponse.json({ message: ERROR_MESSAGE[400] }, { status: 400 });
+  if (query == null) return NextResponse.json(null, { status: 400 });
 
   try {
     const response = await fetch(
@@ -34,6 +32,6 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(await response.json());
   } catch (error) {
-    return NextResponse.json({ message: ERROR_MESSAGE[500] }, { status: 500 });
+    return NextResponse.json(null, { status: 500 });
   }
 }

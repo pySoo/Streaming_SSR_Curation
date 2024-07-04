@@ -1,14 +1,10 @@
 import { NextResponse } from 'next/server';
 
-import {
-  ERROR_MESSAGE,
-  WEATHER_API_KEY,
-  WEATHER_DESCRIPTION,
-} from '../constants';
+import { WEATHER_API_KEY, WEATHER_DESCRIPTION } from '../constants';
 import { WeatherListResponse } from '../types';
 
 export async function GET() {
-  if (WEATHER_API_KEY == null) return;
+  if (WEATHER_API_KEY == null) return NextResponse.json(null, { status: 403 });
 
   try {
     const response = await fetch(
@@ -40,6 +36,6 @@ export async function GET() {
 
     return NextResponse.json(filteredData);
   } catch (error) {
-    return NextResponse.json({ message: ERROR_MESSAGE[500] }, { status: 500 });
+    return NextResponse.json(null, { status: 500 });
   }
 }
