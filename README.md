@@ -1,6 +1,6 @@
 # Streaming SSR - Weather Curation
 
-> 🚀 [이전 SSR 방식의 프로젝트](https://github.com/pySoo/WeatherCuration-Frontend)를 **`Next.js 13 버전`** 과 **`Streaming SSR 렌더링`** 방식을 이용하여 개선하였습니다.
+🚀 [이전 SSR 방식의 프로젝트](https://github.com/pySoo/WeatherCuration-Frontend)를 **`Next.js 13 버전`** 과 **`Streaming SSR 렌더링`** 방식을 이용하여 개선하였습니다.
 
 - 날씨 상태에 따라 **상품을 추천해주는 큐레이션 서비스**입니다.
 - 현재 **시간과 기상 상태**(눈, 비, 구름)에 따라 **`애니메이션`** 이 나타납니다.
@@ -43,7 +43,7 @@
 - 이전 프로젝트 대비 **`LCP를 2.7초 개선`** 하였습니다.
 - 압축률이 높은 **avif, webp 포맷**을 사용하여 **`이미지 용량이 40% 이상 감소`** 하였습니다.
 - 뷰포트에 보이는 이미지들은 **priority** 설정을 하여 가장 먼저 로드할 수 있도록 개선하였습니다.
-- next config의 imageSizes, deviceSizes 설정을 통해 **srcset에 저장되는 이미지 개수를 제한**하여 **이미지 로드 시간을 개선**하였습니다.
+- next config 설정을 통해 **srcset에 저장되는 이미지 개수를 제한**하여 **이미지 로드 시간을 개선**하였습니다.
 - placeholder의 blur 설정과 사이즈 지정을 통해 **`layout shift 현상을 방지`** 하였습니다.
 
 #### 검색 페이지 무한 스크롤 reflow 개선
@@ -70,7 +70,7 @@
 
 ### 요구사항 변경에 쉽게 대응할 수 있는 IoC 패턴
 
-- ReactElement 타입의 **`right`** props를 통해 상품 카드 우측 상단에 LikeButton, Checkbox 등 **컴포넌트를 주입**할 수 있습니다.
+- ReactElement 타입의 **`right`** props를 통해 상품 카드 우측 상단에 LikeButton, Checkbox 등의 **컴포넌트를 주입**합니다.
 - 요구사항이 변경된다면 right에 **`주입할 컴포넌트를 교체하는 구조`로 변화에 쉽게 대응**할 수 있습니다
 
 <br>
@@ -79,14 +79,15 @@
 
 공통 컴포넌트들은 재사용성을 높이기 위해 **비즈니스 로직을 포함하지 않으며** **`components/Shared`** 폴더에 모아 관리합니다.
 
-#### Button.tsx
+#### 확장성과 일관된 스타일
 
-- **`variant`** ('primary' | 'secondary'), **`size`** ('small' | 'medium') 등의 props를 통해 **일관된 스타일 가이드를 적용**하였습니다.
+- **`Text 컴포넌트`** 의 경우 as 속성을 통해 p tag, span tag 등 **`HTML 태그를 선택`** 할 수 있는 확장성을 제공합니다.
+- **`Button 컴포넌트`** 와 같이 **일관된 스타일 적용**이 필요한 경우 **`variant`** ('title' | 'subtitle' | 'body') 속성을 활용하여 스타일을 지정합니다.
 
-#### Text.tsx
+#### 재사용을 위한 합성 컴포넌트
 
-- as 속성을 통해 **`HTML 태그를 선택`** 할 수 있는 확장성을 제공합니다.
-- **`variant`** ('title' | 'subtitle' | 'body') 속성을 활용하여 **일관된 스타일 가이드를 적용**합니다.
+- 상품 리스트 스켈레톤과 같이 **조립되는 형태로 재사용되는 스켈레톤 컴포넌트**는 합성 컴포넌트로 설계하였습니다.
+- **label을 공통으로 사용**하는 Input, Textarea 컴포넌트를 합성 컴포넌트로 설계하여 코드를 재사용합니다.
 
 <br>
 
