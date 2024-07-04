@@ -1,12 +1,12 @@
 import Navigation from '@/components/Navigation';
 import PageLayout from '@/components/Shared/Layout/PageLayout';
-import WeatherBackground from '@/components/Weather/Background/WeatherBackground';
+import HydratedWeatherBackground from '@/components/Weather/Background/HydratedWeatherBackground';
 
 import SearchSection from './SearchSection';
 
 export default function SearchPage() {
   return (
-    <PageLayout background={<WeatherBackground />}>
+    <PageLayout background={<HydratedWeatherBackground />}>
       <SearchSection />
       <Navigation />
     </PageLayout>
