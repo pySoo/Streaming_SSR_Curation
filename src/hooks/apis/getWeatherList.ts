@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query';
 import { ERROR_MESSAGE } from '@/app/api/constants';
 import { QUERY_KEYS } from '@/app/api/queries/queryKey';
 import { CurrentWeather, Weather } from '@/app/api/types';
-import useWeatherStore from '@/store/weatherStore';
 import { toastify } from '@/components/Shared/Toast/utils';
 
 export const getWeatherList = async () => {
@@ -35,16 +34,7 @@ export const getCurrentWeather = async () => {
 };
 
 export const useGetWeatherList = () => {
-  const setWeatherList = useWeatherStore((state) => state.setWeatherList);
-  const setTodayWeather = useWeatherStore((state) => state.setTodayWeather);
-
-  return useQuery([QUERY_KEYS.WEATHER.LIST], getWeatherList, {
-    select: (data) => {
-      setWeatherList(data);
-      setTodayWeather(data[0]);
-      return data;
-    },
-  });
+  return useQuery([QUERY_KEYS.WEATHER.LIST], getWeatherList);
 };
 
 export const useGetCurrentWeather = () => {
