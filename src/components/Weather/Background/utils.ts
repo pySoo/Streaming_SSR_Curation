@@ -5,6 +5,7 @@ const DAYTIME_COLOR = {
   sunset: 'to bottom, #094F91, #E6D6C3',
   night: 'to bottom, #05051C, #334461',
   day: 'to bottom, #094F91, #ABC9E8',
+  default: 'to bottom, #072A57, #6F87A5',
 };
 
 export const getCurrentSkyColor = () => {
@@ -14,5 +15,5 @@ export const getCurrentSkyColor = () => {
 };
 
 export const getDefaultSkyColor = () => {
-  return DAYTIME_COLOR['day'];
+  return DAYTIME_COLOR['default'];
 };
