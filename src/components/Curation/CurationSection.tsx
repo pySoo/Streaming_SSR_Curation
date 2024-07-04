@@ -1,6 +1,6 @@
 'use client';
 
-import useWeatherStore from '@/store/weatherStore';
+import { useGetWeatherList } from '@/hooks/apis/getWeatherList';
 
 import Border from '../Shared/Border';
 import Stack from '../Shared/Layout/Stack';
@@ -8,9 +8,9 @@ import ClothesCuration from './Clothes/ClothesCuration';
 import CosmeticCuration from './Cosmetic/CosmeticCuration';
 
 export default function CurationSection() {
-  const currentWeather = useWeatherStore((state) => state.currentWeather);
+  const { data: weatherList } = useGetWeatherList();
 
-  if (currentWeather == null) return null;
+  if (weatherList == null) return null;
 
   return (
     <section>
