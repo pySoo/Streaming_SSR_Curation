@@ -8,6 +8,7 @@ const getQueryClient = cache(
         queries: {
           refetchOnWindowFocus: false,
           suspense: true,
+          staleTime: 1000 * 60,
         },
       },
     }),

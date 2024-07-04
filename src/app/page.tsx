@@ -5,7 +5,7 @@ import AsyncBoundary from '@/components/Shared/AsyncBoundary';
 import Border from '@/components/Shared/Border';
 import PageLayout from '@/components/Shared/Layout/PageLayout';
 import Stack from '@/components/Shared/Layout/Stack';
-import WeatherBackground from '@/components/Weather/Background/WeatherBackground';
+import HydratedWeatherBackground from '@/components/Weather/Background/HydratedWeatherBackground';
 import CurrentWeatherSkeleton from '@/components/Weather/CurrentWeather/CurrentWeatherSkeleton';
 import HydratedCurrentWeather from '@/components/Weather/CurrentWeather/HydratedCurrentWeather';
 import HydratedWeatherList from '@/components/Weather/HydratedWeatherList';
@@ -16,7 +16,7 @@ export default function Main() {
     <PageLayout
       className='pb-navigation'
       bottom={<Navigation />}
-      background={<WeatherBackground />}
+      background={<HydratedWeatherBackground />}
     >
       <main>
         <AsyncBoundary suspenseFallback={<CurrentWeatherSkeleton />}>
