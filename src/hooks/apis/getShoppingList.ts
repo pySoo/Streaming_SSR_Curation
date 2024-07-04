@@ -4,11 +4,9 @@ import { QUERY_KEYS } from '@/app/api/queries/queryKey';
 import { ShoppingListResponse } from '@/app/api/types';
 import useLikeStore from '@/store/likeStore';
 
-const MOCK_QUERY = 'summer';
-
 export const getShoppingList = async (
   page: number = 1,
-  query: string = MOCK_QUERY,
+  query: string,
   display: number = 10,
 ) => {
   const response = await fetch(
@@ -23,7 +21,7 @@ export const getShoppingList = async (
   return result;
 };
 
-export const useGetShoppingList = ({ query }: { query?: string } = {}) => {
+export const useGetShoppingList = ({ query }: { query: string }) => {
   const likeList = useLikeStore((state) => state.likeList);
 
   return useInfiniteQuery(
