@@ -1,7 +1,9 @@
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 
+import { ERROR_MESSAGE } from '@/app/api/constants';
 import { QUERY_KEYS } from '@/app/api/queries/queryKey';
 import { ShoppingListResponse } from '@/app/api/types';
+import { toastify } from '@/components/Shared/Toast/utils';
 import useLikeStore from '@/store/likeStore';
 
 export const getShoppingList = async (
@@ -14,7 +16,8 @@ export const getShoppingList = async (
   );
 
   if (!response.ok) {
-    console.error(response.status);
+    toastify.error(ERROR_MESSAGE[response.status]);
+    return null;
   }
 
   const result: ShoppingListResponse = await response.json();
@@ -29,6 +32,8 @@ export const useGetShoppingList = ({ query }: { query: string }) => {
     ({ pageParam = 1 }) => getShoppingList(pageParam, query),
     {
       getNextPageParam: (lastPage) => {
+        if (lastPage === null) return false;
+
         const { start, total, display } = lastPage;
 
         const nextPage = start + 1;
@@ -38,6 +43,8 @@ export const useGetShoppingList = ({ query }: { query: string }) => {
       },
       select: (data) => ({
         pages: data.pages.flatMap((result) => {
+          if (result === null) return [];
+
           const filteredProduct = result.items.map((item) => {
             const isLikedItem = likeList.findIndex(
               (likeItem) => likeItem.productId === item.productId,
@@ -69,6 +76,8 @@ export const useCurationShoppingList = ({
     () => getShoppingList(1, query, display),
     {
       select: (data) => {
+        if (data === null) return [];
+
         const filteredProduct = data.items.map((item) => {
           const isLikedItem = likeList.findIndex(
             (likeItem) => likeItem.productId === item.productId,
