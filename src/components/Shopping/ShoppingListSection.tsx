@@ -4,6 +4,7 @@ import { useGetShoppingList } from '@/hooks/apis/getShoppingList';
 import { useIntersect } from '@/hooks/useIntersect';
 
 import List from '../Shared/Layout/List';
+import Text from '../Shared/Text';
 import ProductCard from './ProductCard';
 import ProductLikeButton from './ProductLikeButton';
 import ProductListSkeleton from './ProductListSkeleton';
@@ -30,6 +31,11 @@ export default function ShoppingListSection({ query }: Props) {
   if (data == null) return null;
 
   const { pages: shoppingList } = data;
+
+  if (shoppingList.length === 0) {
+    return <Text className='text-center'>검색 결과가 없습니다.</Text>;
+  }
+
   return (
     <section className='pb-navigation'>
       <List className='grid grid-item grid-cols-2'>
