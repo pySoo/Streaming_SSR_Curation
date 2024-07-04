@@ -4,7 +4,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#5FA5F9',
+        primary: '#2D51A4',
+        navy: '#2D51A4',
+        turquoise: '#0F5985',
+        lightGray: '#FAFAFA',
+        darkGray: '#545454',
+        darkRed: '#B30F00',
         highlight: '#ED4855',
       },
       zIndex: {
