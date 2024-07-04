@@ -1,18 +1,19 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 import { useGetCurrentWeather } from '@/hooks/apis/getWeatherList';
 import { getDayTime } from '@/utils/date';
 
 import { Cloud, Rain, Snow, Stars, Sun } from './Animation';
-import { getCurrentSkyColor } from './utils';
+import { getCurrentSkyColor, getDefaultSkyColor } from './utils';
 
 export default function WeatherBackground() {
+  const [isDay, setIsDay] = useState(true);
+  const [skyColor, setSkyColor] = useState(getDefaultSkyColor());
   const { data: currentWeather } = useGetCurrentWeather();
 
   const weatherSummary = currentWeather?.summary;
-
-  const isDay = getDayTime() === 'day';
-  const skyColor = getCurrentSkyColor();
 
   const cloudCover =
     weatherSummary === 'cloudy'
@@ -20,6 +21,11 @@ export default function WeatherBackground() {
       : weatherSummary === 'partly cloudy'
         ? 30
         : 0;
+
+  useEffect(() => {
+    setIsDay(getDayTime() === 'day');
+    setSkyColor(getCurrentSkyColor());
+  }, []);
 
   return (
     <div

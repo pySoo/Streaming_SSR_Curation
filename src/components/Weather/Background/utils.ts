@@ -12,3 +12,7 @@ export const getCurrentSkyColor = () => {
 
   return DAYTIME_COLOR[dayTime];
 };
+
+export const getDefaultSkyColor = () => {
+  return DAYTIME_COLOR['day'];
+};
