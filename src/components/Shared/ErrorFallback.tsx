@@ -11,7 +11,7 @@ export default function ErrorFallback({ resetErrorBoundary }: FallbackProps) {
   return (
     <div
       role='alert'
-      className='pt-16 flex flex-col items-center justify-center gap-4 h-screen'
+      className='py-10 flex flex-col items-center justify-center gap-4'
     >
       <Text variant='title'>문제가 발생했습니다</Text>
       <Stack.Row className='gap-4'>
