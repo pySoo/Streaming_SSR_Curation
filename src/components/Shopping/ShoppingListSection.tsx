@@ -10,7 +10,7 @@ import ProductLikeButton from './ProductLikeButton';
 import ProductListSkeleton from './ProductListSkeleton';
 
 interface Props {
-  query?: string;
+  query: string;
 }
 
 export default function ShoppingListSection({ query }: Props) {
