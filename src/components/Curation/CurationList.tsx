@@ -7,10 +7,16 @@ import ProductLikeButton from '../Shopping/ProductLikeButton';
 interface Props {
   query: string;
   display?: number;
+  isPriority?: boolean;
   className?: string;
 }
 
-export default function CurationList({ query, display = 6, className }: Props) {
+export default function CurationList({
+  query,
+  display = 6,
+  isPriority,
+  className,
+}: Props) {
   const { data: productList } = useCurationShoppingList({ query, display });
 
   if (productList == null) return null;
@@ -24,6 +30,7 @@ export default function CurationList({ query, display = 6, className }: Props) {
         >
           <ProductCard
             product={product}
+            isPriority={isPriority}
             right={<ProductLikeButton product={product} />}
           />
         </List.Row>

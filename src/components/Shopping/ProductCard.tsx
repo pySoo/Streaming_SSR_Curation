@@ -9,10 +9,15 @@ import Text from '../Shared/Text';
 
 interface Props {
   product: Product;
+  isPriority?: boolean;
   right?: ReactNode;
 }
 
-export default function ProductCard({ product, right }: Props) {
+export default function ProductCard({
+  product,
+  isPriority = false,
+  right,
+}: Props) {
   const { productId, image, title, lprice, link } = product;
 
   const handleCardClick = (event: MouseEvent<HTMLDivElement>) => {
@@ -49,6 +54,7 @@ export default function ProductCard({ product, right }: Props) {
           src={image}
           alt={`shopping-item-image-${productId}`}
           className='h-full aspect-square bg-gray-100 object-contain'
+          priority={isPriority}
         />
       </Stack>
       <Stack className='mt-2'>
