@@ -1,5 +1,3 @@
-import { getDayTime } from '@/utils/date';
-
 const DAYTIME_COLOR = {
   sunrise: 'to bottom, #1B2A4A, #7D6180',
   sunset: 'to bottom, #094F91, #E6D6C3',
@@ -8,9 +6,7 @@ const DAYTIME_COLOR = {
   default: 'to bottom, #072A57, #6F87A5',
 };
 
-export const getCurrentSkyColor = () => {
-  const dayTime = getDayTime();
-
+export const getCurrentSkyColor = (dayTime: keyof typeof DAYTIME_COLOR) => {
   return DAYTIME_COLOR[dayTime];
 };
 
