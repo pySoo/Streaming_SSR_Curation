@@ -33,9 +33,9 @@ export const getCurrentWeather = async () => {
 };
 
 export const useGetWeatherList = () => {
-  return useQuery([QUERY_KEYS.WEATHER.LIST], getWeatherList);
+  return useQuery(QUERY_KEYS.WEATHER.LIST, getWeatherList);
 };
 
 export const useGetCurrentWeather = () => {
-  return useQuery([QUERY_KEYS.WEATHER.CURRENT], getCurrentWeather);
+  return useQuery(QUERY_KEYS.WEATHER.CURRENT, getCurrentWeather);
 };

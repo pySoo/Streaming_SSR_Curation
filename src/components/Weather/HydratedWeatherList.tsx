@@ -8,7 +8,7 @@ import WeatherListSection from './WeatherListSection';
 
 export default async function HydratedWeatherList() {
   const queryClient = getQueryClient();
-  await queryClient.prefetchQuery([QUERY_KEYS.WEATHER.LIST], () =>
+  await queryClient.prefetchQuery(QUERY_KEYS.WEATHER.LIST, () =>
     getWeatherList(),
   );
 
