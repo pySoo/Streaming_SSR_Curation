@@ -8,7 +8,7 @@ import WeatherBackground from './WeatherBackground';
 
 export default async function HydratedWeatherBackground() {
   const queryClient = getQueryClient();
-  await queryClient.prefetchQuery([QUERY_KEYS.WEATHER.CURRENT], () =>
+  await queryClient.prefetchQuery(QUERY_KEYS.WEATHER.CURRENT, () =>
     getCurrentWeather(),
   );
 

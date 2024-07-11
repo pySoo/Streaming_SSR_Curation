@@ -27,7 +27,7 @@ export const useGetShoppingList = ({ query }: { query: string }) => {
   const likeList = useLikeStore((state) => state.likeList);
 
   return useInfiniteQuery(
-    [QUERY_KEYS.SHOPPING.LIST, query],
+    QUERY_KEYS.SHOPPING.LIST(query),
     ({ pageParam = 1 }) => getShoppingList(pageParam, query),
     {
       getNextPageParam: (lastPage) => {
@@ -71,7 +71,7 @@ export const useCurationShoppingList = ({
   const likeList = useLikeStore((state) => state.likeList);
 
   return useQuery(
-    [QUERY_KEYS.SHOPPING.LIST, query, display],
+    QUERY_KEYS.SHOPPING.LIST(query, display),
     () => getShoppingList(1, query, display),
     {
       select: (data) => {

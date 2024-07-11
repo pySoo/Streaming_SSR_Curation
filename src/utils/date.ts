@@ -42,3 +42,13 @@ export const getDayTime = () => {
     return 'night';
   }
 };
+
+export const getCurrentDate = () => {
+  const currentDate = dayjs();
+  return convertDateByFormat(currentDate, 'YYYY-MM-DD');
+};
+
+export const getCurrentDateAndHour = () => {
+  const currentDate = dayjs();
+  return convertDateByFormat(currentDate, 'YYYY-MM-DD HH:00');
+};

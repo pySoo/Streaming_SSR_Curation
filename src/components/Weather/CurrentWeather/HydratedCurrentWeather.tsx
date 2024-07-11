@@ -8,7 +8,7 @@ import CurrentWeatherSection from './CurrentWeatherSection';
 
 export default async function HydratedCurrentWeather() {
   const queryClient = getQueryClient();
-  await queryClient.prefetchQuery([QUERY_KEYS.WEATHER.CURRENT], () =>
+  await queryClient.prefetchQuery(QUERY_KEYS.WEATHER.CURRENT, () =>
     getCurrentWeather(),
   );
 
