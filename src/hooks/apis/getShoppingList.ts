@@ -71,7 +71,7 @@ export const useCurationShoppingList = ({
   const likeList = useLikeStore((state) => state.likeList);
 
   return useQuery(
-    [QUERY_KEYS.SHOPPING.LIST, query, display],
+    QUERY_KEYS.SHOPPING.LIST(query, display),
     () => getShoppingList(1, query, display),
     {
       select: (data) => {
