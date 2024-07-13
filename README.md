@@ -1,9 +1,10 @@
 # Streaming SSR - Weather Curation
 
-🚀 [이전 SSR 방식의 프로젝트](https://github.com/pySoo/WeatherCuration-Frontend)를 **`Next.js 13 버전`** 과 **`Streaming SSR 렌더링`** 방식을 이용하여 개선하였습니다.
+🚀 [이전 SSR 방식의 프로젝트](https://github.com/pySoo/WeatherCuration-Frontend)를 **`Next.js 14 버전`** 과 **`Streaming SSR 렌더링`** 방식을 이용하여 개선하였습니다.
 
 - 날씨 상태에 따라 **상품을 추천해주는 큐레이션 서비스**입니다.
 - 현재 **시간과 기상 상태**(눈, 비, 구름)에 따라 **`애니메이션`** 이 나타납니다.
+- 모든 개발 내용을 [Issue, PR](https://github.com/pySoo/Streaming_SSR_Curation/pulls?q=is%3Apr+is%3Aclosed)을 이용하여 **기록하고 관리**하였습니다.
 
 <br>
 
@@ -17,7 +18,7 @@
 
 ## 🏠 프로젝트 소개
 
-### Next.js 13 버전 선택 이유
+### Next.js 14 버전 선택 이유
 
 - **서버 컴포넌트 사용**으로 클라이언트의 번들 사이즈가 줄어들어 **`초기 로딩 속도를 개선`** 할 수 있습니다.
 - **내장 fetch 기능**을 통해 데이터를 캐싱하고 서버 컴포넌트의 통신은 서버에서 처리하여 **`네트워크 시간을 개선`** 할 수 있습니다.
