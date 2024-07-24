@@ -7,6 +7,7 @@ import { handleError } from '@/app/api/utils';
 export const getWeatherList = async () => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_LOCAL_HOST}/api/getWeatherList`,
+    { cache: 'no-store' },
   );
 
   if (!response.ok) {
@@ -21,6 +22,7 @@ export const getWeatherList = async () => {
 export const getCurrentWeather = async () => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_LOCAL_HOST}/api/getCurrentWeather`,
+    { cache: 'no-store' },
   );
 
   if (!response.ok) {
