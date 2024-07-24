@@ -10,6 +10,8 @@ export default function ReactQueryProvider({ children }: PropsWithChildren) {
       new QueryClient({
         defaultOptions: {
           queries: {
+            refetchOnWindowFocus: false,
+            suspense: true,
             staleTime: 1000 * 60,
           },
         },
