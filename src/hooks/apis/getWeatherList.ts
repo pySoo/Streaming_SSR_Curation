@@ -4,12 +4,10 @@ import { QUERY_KEYS } from '@/app/api/queries/queryKey';
 import { CurrentWeather, Weather } from '@/app/api/types';
 import { handleError } from '@/app/api/utils';
 
-import { REVALIDATE_TIME } from './constants';
-
 export const getWeatherList = async () => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_LOCAL_HOST}/api/getWeatherList`,
-    { next: { revalidate: REVALIDATE_TIME.DAY } },
+    { cache: 'no-store' },
   );
 
   if (!response.ok) {
@@ -24,7 +22,7 @@ export const getWeatherList = async () => {
 export const getCurrentWeather = async () => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_LOCAL_HOST}/api/getCurrentWeather`,
-    { next: { revalidate: REVALIDATE_TIME.HOUR } },
+    { cache: 'no-store' },
   );
 
   if (!response.ok) {
