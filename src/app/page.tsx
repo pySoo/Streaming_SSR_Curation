@@ -6,9 +6,9 @@ import Border from '@/components/Shared/Border';
 import PageLayout from '@/components/Shared/Layout/PageLayout';
 import Stack from '@/components/Shared/Layout/Stack';
 import HydratedWeatherBackground from '@/components/Weather/Background/HydratedWeatherBackground';
+import CurrentWeatherSection from '@/components/Weather/CurrentWeather/CurrentWeatherSection';
 import CurrentWeatherSkeleton from '@/components/Weather/CurrentWeather/CurrentWeatherSkeleton';
-import HydratedCurrentWeather from '@/components/Weather/CurrentWeather/HydratedCurrentWeather';
-import HydratedWeatherList from '@/components/Weather/HydratedWeatherList';
+import WeatherListSection from '@/components/Weather/WeatherListSection';
 import WeatherListSkeleton from '@/components/Weather/WeatherListSkeleton';
 
 export default function Main() {
@@ -20,11 +20,11 @@ export default function Main() {
     >
       <main>
         <AsyncBoundary suspenseFallback={<CurrentWeatherSkeleton />}>
-          <HydratedCurrentWeather />
+          <CurrentWeatherSection />
         </AsyncBoundary>
         <Stack className='gap-10'>
           <AsyncBoundary suspenseFallback={<WeatherListSkeleton />}>
-            <HydratedWeatherList />
+            <WeatherListSection />
           </AsyncBoundary>
           <Border size={1} />
           <AsyncBoundary suspenseFallback={<CurationSkeleton />}>
